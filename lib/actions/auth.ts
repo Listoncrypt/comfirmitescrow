@@ -99,6 +99,11 @@ export async function resetPassword(formData: FormData) {
   const headersList = await headers();
   const origin = headersList.get("origin") || "";
 
+  // Prioritize environment variable for production correctness
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || origin;
+  // Ensure no trailing slash
+  const baseUrl = appUrl.replace(/\/$/, "");
+
   const email = formData.get("email") as string;
 
   if (!email) {
@@ -106,8 +111,35 @@ export async function resetPassword(formData: FormData) {
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/confirm`,
+    redirectTo: `${baseUrl}/auth/callback`,
   });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { success: true };
+}
+
+export async function changePassword(formData: FormData) {
+  const supabase = await createClient();
+
+  const password = formData.get("password") as string;
+  const confirmPassword = formData.get("confirmPassword") as string;
+
+  if (!password || !confirmPassword) {
+    return { error: "Both fields are required" };
+  }
+
+  if (password.length < 8) {
+    return { error: "Password must be at least 8 characters" };
+  }
+
+  if (password !== confirmPassword) {
+    return { error: "Passwords do not match" };
+  }
+
+  const { error } = await supabase.auth.updateUser({ password });
 
   if (error) {
     return { error: error.message };

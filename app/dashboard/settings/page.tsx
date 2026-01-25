@@ -148,30 +148,136 @@ export default function SettingsPage() {
               </Button>
             </form>
           </CardContent>
-        </Card>
+        </Button>
+      </form>
+    </CardContent>
+        </Card >
 
-        <Card>
+    {/* Password Update Card */ }
+    < Card >
           <CardHeader>
-            <CardTitle>Account Balance</CardTitle>
-            <CardDescription>Your current escrow balance</CardDescription>
+            <CardTitle>Security</CardTitle>
+            <CardDescription>Update your password</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-3xl font-bold">
-                  ₦{profile.balance?.toFixed(2) || "0.00"}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Available for deals
-                </p>
-              </div>
-              <Button variant="outline" asChild>
-                <a href="/dashboard/withdrawals">Manage Withdrawals</a>
-              </Button>
-            </div>
+             <ChangePasswordForm />
           </CardContent>
-        </Card>
-      </div>
+        </Card >
+
+    <Card>
+      <CardHeader>
+        <CardTitle>Account Balance</CardTitle>
+        <CardDescription>Your current escrow balance</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-3xl font-bold">
+              ₦{profile.balance?.toFixed(2) || "0.00"}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Available for deals
+            </p>
+          </div>
+          <Button variant="outline" asChild>
+            <a href="/dashboard/withdrawals">Manage Withdrawals</a>
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+      </div >
+    </div >
+  );
+}
+
+import { changePassword } from "@/lib/actions/auth";
+import { Lock } from "lucide-react";
+
+function ChangePasswordForm() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+    setSuccess(false);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const result = await changePassword(formData);
+
+    if (result?.error) {
+      setError(result.error);
+    } else {
+      setSuccess(true);
+      // Reset form
+      e.currentTarget.reset();
+      setTimeout(() => setSuccess(false), 3000);
+    }
+    setIsLoading(false);
+  }
+
+  return (
+    <div>
+      {error && (
+        <div className="mb-4 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
+          {error}
+        </div>
+      )}
+      {success && (
+        <div className="mb-4 rounded-lg bg-green-500/10 p-3 text-sm text-green-600 flex items-center gap-2">
+          <CheckCircle2 className="h-4 w-4" />
+          Password updated successfully
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="password">New Password</Label>
+          <div className="relative">
+            <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="******"
+              className="pl-9"
+              required
+              minLength={8}
+              disabled={isLoading}
+            />
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <div className="relative">
+            <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              placeholder="******"
+              className="pl-9"
+              required
+              minLength={8}
+              disabled={isLoading}
+            />
+          </div>
+        </div>
+
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Updating...
+            </>
+          ) : (
+            "Update Password"
+          )}
+        </Button>
+      </form>
     </div>
   );
 }
