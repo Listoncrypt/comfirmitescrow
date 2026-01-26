@@ -70,7 +70,7 @@ export default async function WithdrawalsPage() {
           </CardHeader>
           <CardContent>
             <div className="text-4xl font-bold text-primary">
-              ₦{profile?.balance?.toFixed(2) || "0.00"}
+              ₦{profile?.balance?.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || "0.00"}
             </div>
             <p className="text-sm text-muted-foreground mt-2">
               NGN Balance

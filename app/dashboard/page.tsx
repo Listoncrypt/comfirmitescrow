@@ -138,7 +138,7 @@ export default async function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              ₦{profile?.balance?.toFixed(2) || "0.00"}
+              ₦{profile?.balance?.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || "0.00"}
             </div>
             <p className="text-xs text-muted-foreground">Available to withdraw</p>
           </CardContent>

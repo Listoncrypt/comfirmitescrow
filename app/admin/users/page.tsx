@@ -99,7 +99,7 @@ export default async function AdminUsersPage() {
                         {profile.role}
                       </Badge>
                     </TableCell>
-                    <TableCell>₦{profile.balance?.toFixed(2) || "0.00"}</TableCell>
+                    <TableCell>₦{profile.balance?.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || "0.00"}</TableCell>
                     <TableCell className="text-muted-foreground">
                       {format(new Date(profile.created_at), "MMM d, yyyy")}
                     </TableCell>

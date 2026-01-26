@@ -170,7 +170,7 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-3xl font-bold">
-                  ₦{profile.balance?.toFixed(2) || "0.00"}
+                  ₦{profile.balance?.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || "0.00"}
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Available for deals
