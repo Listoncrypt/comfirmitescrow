@@ -235,7 +235,7 @@ export default async function DashboardPage() {
                         {status?.label || deal.status}
                       </Badge>
                       <span className="font-semibold">
-                        ₦{deal.amount?.toFixed(2)}
+                        ₦{deal.amount?.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || "0.00"}
                       </span>
                     </div>
                   </Link>
