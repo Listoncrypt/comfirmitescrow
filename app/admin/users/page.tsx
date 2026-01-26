@@ -21,6 +21,31 @@ import { format } from "date-fns";
 import { AdminUserActions } from "@/components/admin/user-actions";
 import { UserSearch } from "@/components/admin/user-search";
 
+export const dynamic = "force-dynamic";
+
+// Helper component for highlighting text
+function HighlightText({ text, highlight }: { text: string; highlight: string }) {
+  if (!highlight.trim()) {
+    return <span>{text}</span>;
+  }
+
+  const parts = text.split(new RegExp(`(${highlight})`, "gi"));
+
+  return (
+    <span>
+      {parts.map((part, i) =>
+        part.toLowerCase() === highlight.toLowerCase() ? (
+          <span key={i} className="bg-yellow-200 dark:bg-yellow-900/50 font-bold">
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </span>
+  );
+}
+
 export default async function AdminUsersPage({
   searchParams,
 }: {
@@ -49,7 +74,8 @@ export default async function AdminUsersPage({
     );
   }
 
-  const { data: users } = await queryBuilder;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const { data: users } = await queryBuilder as { data: any[] };
 
   return (
     <div className="space-y-6">
@@ -87,7 +113,7 @@ export default async function AdminUsersPage({
                 const initials = profile.full_name
                   ? profile.full_name
                     .split(" ")
-                    .map((n) => n[0])
+                    .map((n: string) => n[0])
                     .join("")
                     .toUpperCase()
                     .slice(0, 2)
@@ -102,11 +128,19 @@ export default async function AdminUsersPage({
                             {initials}
                           </AvatarFallback>
                         </Avatar>
-                        <span className="font-medium">{profile.full_name}</span>
+                        <span className="font-medium">
+                          <HighlightText
+                            text={profile.full_name || ""}
+                            highlight={query}
+                          />
+                        </span>
                       </div>
                     </TableCell>
                     <TableCell className="text-muted-foreground">
-                      {profile.email}
+                      <HighlightText
+                        text={profile.email || ""}
+                        highlight={query}
+                      />
                     </TableCell>
                     <TableCell>
                       <Badge
