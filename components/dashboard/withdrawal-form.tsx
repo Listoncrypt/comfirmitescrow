@@ -37,18 +37,35 @@ export function WithdrawalForm({ balance, disabled, defaultValues }: WithdrawalF
     return (
         <form action={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-                <Label htmlFor="amount">Amount (NGN)</Label>
-                <Input
-                    id="amount"
-                    name="amount"
-                    type="number"
-                    step="0.01"
-                    min="10"
-                    max={balance || 0}
-                    placeholder="0.00"
-                    required
-                // Amount typically isn't prefilled as it changes
-                />
+                <Label htmlFor="amountDisplay">Amount (NGN)</Label>
+                <div className="relative">
+                    <span className="absolute left-3 top-2.5 text-muted-foreground">₦</span>
+                    <Input
+                        id="amountDisplay"
+                        name="amountDisplay"
+                        type="text"
+                        placeholder="0.00"
+                        className="pl-7"
+                        required
+                        onChange={(e) => {
+                            // Remove non-numeric characters except decimal
+                            const rawValue = e.target.value.replace(/[^0-9.]/g, '');
+                            // Split integer and decimal parts
+                            const parts = rawValue.split('.');
+                            // Format integer part with commas
+                            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            // Reassemble
+                            e.target.value = parts.slice(0, 2).join('.');
+
+                            // Update hidden input
+                            const hiddenInput = document.getElementById('amount') as HTMLInputElement;
+                            if (hiddenInput) {
+                                hiddenInput.value = rawValue;
+                            }
+                        }}
+                    />
+                    <input type="hidden" id="amount" name="amount" />
+                </div>
                 <p className="text-xs text-muted-foreground">Minimum: ₦1,000.00</p>
             </div>
 

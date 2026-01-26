@@ -132,17 +132,35 @@ export default function NewDealPage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="amount">Amount (NGN)</Label>
-                <Input
-                  id="amount"
-                  name="amount"
-                  type="number"
-                  min="1"
-                  step="0.01"
-                  placeholder="0.00"
-                  required
-                  disabled={isLoading}
-                />
+                <Label htmlFor="amountDisplay">Amount (NGN)</Label>
+                <div className="relative">
+                  <span className="absolute left-3 top-2.5 text-muted-foreground">₦</span>
+                  <Input
+                    id="amountDisplay"
+                    type="text"
+                    placeholder="0.00"
+                    className="pl-7"
+                    required
+                    disabled={isLoading}
+                    onChange={(e) => {
+                      // Remove non-numeric characters except decimal
+                      const rawValue = e.target.value.replace(/[^0-9.]/g, '');
+                      // Split integer and decimal parts
+                      const parts = rawValue.split('.');
+                      // Format integer part with commas
+                      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                      // Reassemble
+                      e.target.value = parts.slice(0, 2).join('.');
+
+                      // Update hidden input
+                      const hiddenInput = document.getElementById('amount') as HTMLInputElement;
+                      if (hiddenInput) {
+                        hiddenInput.value = rawValue;
+                      }
+                    }}
+                  />
+                  <input type="hidden" id="amount" name="amount" />
+                </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="counterpartyEmail">
@@ -156,6 +174,7 @@ export default function NewDealPage() {
                   required
                   disabled={isLoading}
                 />
+
               </div>
             </div>
 
@@ -220,6 +239,6 @@ export default function NewDealPage() {
           </form>
         </CardContent>
       </Card>
-    </div>
+    </div >
   );
 }
