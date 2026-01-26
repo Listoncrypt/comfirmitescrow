@@ -8,6 +8,11 @@ export async function GET(request: Request) {
   const type = searchParams.get("type");
   const next = searchParams.get("next") ?? "/dashboard";
 
+  // Use configured app URL if available (fixes localhost redirect on production)
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL
+    ? process.env.NEXT_PUBLIC_APP_URL.replace(/\/$/, "")
+    : origin;
+
   const supabase = await createClient();
 
   // Handle password recovery with token_hash (from email link)
@@ -19,7 +24,7 @@ export async function GET(request: Request) {
 
     if (!error) {
       // Redirect to reset password page
-      return NextResponse.redirect(`${origin}/reset-password`);
+      return NextResponse.redirect(`${appUrl}/reset-password`);
     }
   }
 
@@ -29,12 +34,12 @@ export async function GET(request: Request) {
     if (!error) {
       // Check if this is a password reset flow
       if (next === "/reset-password") {
-        return NextResponse.redirect(`${origin}/reset-password`);
+        return NextResponse.redirect(`${appUrl}/reset-password`);
       }
-      return NextResponse.redirect(`${origin}${next}`);
+      return NextResponse.redirect(`${appUrl}${next}`);
     }
   }
 
   // Return the user to an error page with instructions
-  return NextResponse.redirect(`${origin}/auth/error`);
+  return NextResponse.redirect(`${appUrl}/auth/error`);
 }
