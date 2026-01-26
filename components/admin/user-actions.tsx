@@ -21,8 +21,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { MoreHorizontal, Loader2, DollarSign, Shield, Building2 } from "lucide-react";
-import { updateUserBalance, updateUserRole, updateUserBankDetails } from "@/lib/actions/admin";
+import { MoreHorizontal, Loader2, DollarSign, Shield, Building2, Trash2, AlertCircle } from "lucide-react";
+import { updateUserBalance, updateUserRole, updateUserBankDetails, deleteUser } from "@/lib/actions/admin";
 
 interface AdminUserActionsProps {
   user: any;
@@ -39,6 +39,9 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
     account_number: user.account_number || "",
     account_name: user.account_name || "",
   });
+
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [adminKey, setAdminKey] = useState("");
 
   const router = useRouter();
 
@@ -61,6 +64,19 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
     }
     setIsLoading(false);
     setBankOpen(false);
+    router.refresh();
+  }
+
+  async function handleDeleteUser() {
+    setIsLoading(true);
+    const result = await deleteUser(user.id, adminKey);
+    if (result?.error) {
+      alert(result.error);
+    } else {
+      setDeleteOpen(false);
+      setAdminKey("");
+    }
+    setIsLoading(false);
     router.refresh();
   }
 
@@ -98,9 +114,15 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
             <Shield className="mr-2 h-4 w-4" />
             {user.role === "admin" ? "Remove Admin" : "Make Admin"}
           </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => setDeleteOpen(true)} className="text-destructive">
+            <Trash2 className="mr-2 h-4 w-4" />
+            Delete Account
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
+      {/* Balance Dialog */}
       <Dialog open={balanceOpen} onOpenChange={setBalanceOpen}>
         <DialogContent>
           <DialogHeader>
@@ -136,6 +158,7 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
         </DialogContent>
       </Dialog>
 
+      {/* Bank Details Dialog */}
       <Dialog open={bankOpen} onOpenChange={setBankOpen}>
         <DialogContent>
           <DialogHeader>
@@ -182,6 +205,46 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 "Save Details"
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete User Dialog */}
+      <Dialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+        <DialogContent className="border-destructive">
+          <DialogHeader>
+            <DialogTitle className="text-destructive flex items-center gap-2">
+              <AlertCircle className="h-5 w-5" />
+              Delete Account
+            </DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete <strong>{user.full_name}</strong>?
+              This action cannot be undone. Enter the Admin Key to confirm.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="adminKey">Admin Key</Label>
+              <Input
+                id="adminKey"
+                type="password"
+                placeholder="Enter unique delete key"
+                value={adminKey}
+                onChange={(e) => setAdminKey(e.target.value)}
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeleteOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleDeleteUser} disabled={isLoading} variant="destructive">
+              {isLoading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                "Delete User"
               )}
             </Button>
           </DialogFooter>

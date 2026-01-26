@@ -19,8 +19,13 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { format } from "date-fns";
 import { AdminUserActions } from "@/components/admin/user-actions";
+import { UserSearch } from "@/components/admin/user-search";
 
-export default async function AdminUsersPage() {
+export default async function AdminUsersPage({
+  searchParams,
+}: {
+  searchParams: { query?: string };
+}) {
   const supabase = await createClient();
   const {
     data: { user },
@@ -30,19 +35,32 @@ export default async function AdminUsersPage() {
     redirect("/login");
   }
 
-  // Get all users
-  const { data: users } = await supabase
+  const query = searchParams?.query || "";
+
+  // Get users logic
+  let queryBuilder = supabase
     .from("profiles")
     .select("*")
     .order("created_at", { ascending: false });
 
+  if (query) {
+    queryBuilder = queryBuilder.or(
+      `email.ilike.%${query}%,full_name.ilike.%${query}%`
+    );
+  }
+
+  const { data: users } = await queryBuilder;
+
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">Users</h1>
-        <p className="text-muted-foreground">
-          Manage all registered users on the platform
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">Users</h1>
+          <p className="text-muted-foreground">
+            Manage all registered users on the platform
+          </p>
+        </div>
+        <UserSearch />
       </div>
 
       <Card>

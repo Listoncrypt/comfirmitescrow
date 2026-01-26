@@ -475,3 +475,28 @@ export async function processWithdrawal(
 
   return { error: "Invalid action" };
 }
+
+export async function deleteUser(userId: string, adminKey: string) {
+  if (!(await isAdmin())) {
+    return { error: "Unauthorized" };
+  }
+
+  // Verify the unique key
+  if (adminKey !== "franciscomfirmit@01") {
+    return { error: "Invalid Admin Key. Deletion denied." };
+  }
+
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from("profiles")
+    .delete()
+    .eq("id", userId);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/admin/users");
+  return { success: true };
+}
