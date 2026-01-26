@@ -148,43 +148,40 @@ export default function SettingsPage() {
               </Button>
             </form>
           </CardContent>
-        </Button>
-      </form>
-    </CardContent>
-        </Card >
+        </Card>
 
-    {/* Password Update Card */ }
-    < Card >
+        {/* Password Update Card */}
+        < Card >
           <CardHeader>
             <CardTitle>Security</CardTitle>
             <CardDescription>Update your password</CardDescription>
           </CardHeader>
           <CardContent>
-             <ChangePasswordForm />
+            <ChangePasswordForm />
           </CardContent>
         </Card >
 
-    <Card>
-      <CardHeader>
-        <CardTitle>Account Balance</CardTitle>
-        <CardDescription>Your current escrow balance</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-3xl font-bold">
-              ₦{profile.balance?.toFixed(2) || "0.00"}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Available for deals
-            </p>
-          </div>
-          <Button variant="outline" asChild>
-            <a href="/dashboard/withdrawals">Manage Withdrawals</a>
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Account Balance</CardTitle>
+            <CardDescription>Your current escrow balance</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-3xl font-bold">
+                  ₦{profile.balance?.toFixed(2) || "0.00"}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Available for deals
+                </p>
+              </div>
+              <Button variant="outline" asChild>
+                <a href="/dashboard/withdrawals">Manage Withdrawals</a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div >
     </div >
   );
