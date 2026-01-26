@@ -152,37 +152,7 @@ export default function AccountInfoPage() {
                 </Card>
 
                 {/* Account Info Card (Bank Details) */}
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                            <Building2 className="h-5 w-5" />
-                            Linked Bank Account
-                        </CardTitle>
-                        <CardDescription>
-                            These details are bound to your account for withdrawals
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                        <div className="grid gap-4 sm:grid-cols-2">
-                            <div className="space-y-1">
-                                <Label className="text-xs text-muted-foreground">Bank Name</Label>
-                                <div className="font-medium">{profile.bank_name || "Not set"}</div>
-                            </div>
-                            <div className="space-y-1">
-                                <Label className="text-xs text-muted-foreground">Account Number</Label>
-                                <div className="font-medium font-mono">{profile.account_number || "Not set"}</div>
-                            </div>
-                            <div className="space-y-1 sm:col-span-2">
-                                <Label className="text-xs text-muted-foreground">Account Name</Label>
-                                <div className="font-medium">{profile.account_name || "Not set"}</div>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-2 text-xs text-amber-600 bg-amber-50 p-2 rounded border border-amber-100">
-                            <AlertCircle className="h-4 w-4 flex-shrink-0" />
-                            <span>To change these details, please contact support.</span>
-                        </div>
-                    </CardContent>
-                </Card>
+                <BankDetailsCard profile={profile} />
 
                 {/* Email Update Card */}
                 <Card>
@@ -199,6 +169,114 @@ export default function AccountInfoPage() {
                 </Card>
             </div>
         </div>
+    );
+}
+
+function BankDetailsCard({ profile }: { profile: any }) {
+    const isSet = profile.bank_name && profile.account_number && profile.account_name;
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        setIsLoading(true);
+        setError(null);
+
+        const formData = new FormData(e.currentTarget);
+        const result = await updateProfile(formData);
+
+        if (result?.error) {
+            setError(result.error);
+        } else {
+            window.location.reload(); // Refresh to lock the fields
+        }
+        setIsLoading(false);
+    }
+
+    if (isSet) {
+        return (
+            <Card>
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Building2 className="h-5 w-5" />
+                        Linked Bank Account
+                    </CardTitle>
+                    <CardDescription>
+                        These details are bound to your account for withdrawals
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                        <div className="space-y-1">
+                            <Label className="text-xs text-muted-foreground">Bank Name</Label>
+                            <div className="font-medium">{profile.bank_name}</div>
+                        </div>
+                        <div className="space-y-1">
+                            <Label className="text-xs text-muted-foreground">Account Number</Label>
+                            <div className="font-medium font-mono">{profile.account_number}</div>
+                        </div>
+                        <div className="space-y-1 sm:col-span-2">
+                            <Label className="text-xs text-muted-foreground">Account Name</Label>
+                            <div className="font-medium">{profile.account_name}</div>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-amber-600 bg-amber-50 p-2 rounded border border-amber-100">
+                        <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                        <span>To change these details, please contact support.</span>
+                    </div>
+                </CardContent>
+            </Card>
+        );
+    }
+
+    return (
+        <Card className="border-amber-200 bg-amber-50/50">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-amber-800">
+                    <Building2 className="h-5 w-5" />
+                    Link Bank Account
+                </CardTitle>
+                <CardDescription>
+                    Please set your withdrawal bank account.
+                    <span className="block font-semibold text-amber-800 mt-1">
+                        Warning: Once saved, you cannot edit these details yourself.
+                    </span>
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                {error && (
+                    <div className="mb-4 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
+                        {error}
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                        <div className="space-y-2">
+                            <Label htmlFor="bank_name">Bank Name</Label>
+                            <Input id="bank_name" name="bank_name" placeholder="e.g. GTBank" required />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="account_number">Account Number</Label>
+                            <Input id="account_number" name="account_number" placeholder="0123456789" required minLength={10} />
+                        </div>
+                        <div className="space-y-2 sm:col-span-2">
+                            <Label htmlFor="account_name">Account Name</Label>
+                            <Input id="account_name" name="account_name" placeholder="Must match your registered name" required />
+                        </div>
+                    </div>
+                    <Button type="submit" disabled={isLoading} className="w-full mt-4">
+                        {isLoading ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Saving...
+                            </>
+                        ) : (
+                            "Save & Lock Details"
+                        )}
+                    </Button>
+                </form>
+            </CardContent>
+        </Card>
     );
 }
 

@@ -248,14 +248,42 @@ export async function updateProfile(formData: FormData) {
     return { error: "Not authenticated" };
   }
 
-  // Name is immutable by user req
+  // Get current profile first to check if bank details are locked
+  const { data: currentProfile } = await supabase
+    .from("profiles")
+    .select("bank_name, account_number, account_name")
+    .eq("id", user.id)
+    .single();
+
   const telegramHandle = formData.get("telegramHandle") as string;
+  const bankName = formData.get("bank_name") as string;
+  const accountNumber = formData.get("account_number") as string;
+  const accountName = formData.get("account_name") as string;
+
+  const updates: any = {
+    telegram_handle: telegramHandle || null,
+  };
+
+  // Logic: Allow setting bank details ONLY if they are currently null/empty
+  // and all required fields are provided.
+  if (bankName && accountNumber && accountName) {
+    const isBankLocked = currentProfile?.bank_name && currentProfile?.account_number;
+
+    if (!isBankLocked) {
+      updates.bank_name = bankName;
+      updates.account_number = accountNumber;
+      updates.account_name = accountName;
+    } else {
+      // If user tries to update locked details via API
+      // We can silently ignore or return error. 
+      // Ignoring is safer so we don't break the telegram update if they sent both.
+      // Yet, typically valid form submissions won't happen if UI is correct.
+    }
+  }
 
   const { error } = await supabase
     .from("profiles")
-    .update({
-      telegram_handle: telegramHandle || null,
-    })
+    .update(updates)
     .eq("id", user.id);
 
   if (error) {

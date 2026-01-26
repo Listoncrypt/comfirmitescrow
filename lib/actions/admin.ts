@@ -71,6 +71,30 @@ export async function updateUserRole(userId: string, role: "user" | "admin") {
   return { success: true };
 }
 
+export async function updateUserBankDetails(userId: string, bankDetails: { bank_name: string; account_number: string; account_name: string }) {
+  if (!(await isAdmin())) {
+    return { error: "Unauthorized" };
+  }
+
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from("profiles")
+    .update({
+      bank_name: bankDetails.bank_name,
+      account_number: bankDetails.account_number,
+      account_name: bankDetails.account_name,
+    } as any)
+    .eq("id", userId);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/admin/users");
+  return { success: true };
+}
+
 /**
  * Admin marks a deal as completed/successful
  * This releases funds to the seller after deducting platform fee (2.5%)

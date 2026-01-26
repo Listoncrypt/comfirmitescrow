@@ -21,8 +21,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { MoreHorizontal, Loader2, DollarSign, Shield } from "lucide-react";
-import { updateUserBalance, updateUserRole } from "@/lib/actions/admin";
+import { MoreHorizontal, Loader2, DollarSign, Shield, Building2 } from "lucide-react";
+import { updateUserBalance, updateUserRole, updateUserBankDetails } from "@/lib/actions/admin";
 
 interface AdminUserActionsProps {
   user: any;
@@ -32,6 +32,14 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [balanceOpen, setBalanceOpen] = useState(false);
   const [newBalance, setNewBalance] = useState(user.balance?.toString() || "0");
+
+  const [bankOpen, setBankOpen] = useState(false);
+  const [bankDetails, setBankDetails] = useState({
+    bank_name: user.bank_name || "",
+    account_number: user.account_number || "",
+    account_name: user.account_name || "",
+  });
+
   const router = useRouter();
 
   async function handleUpdateBalance() {
@@ -42,6 +50,17 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
     }
     setIsLoading(false);
     setBalanceOpen(false);
+    router.refresh();
+  }
+
+  async function handleUpdateBankDetails() {
+    setIsLoading(true);
+    const result = await updateUserBankDetails(user.id, bankDetails);
+    if (result?.error) {
+      alert(result.error);
+    }
+    setIsLoading(false);
+    setBankOpen(false);
     router.refresh();
   }
 
@@ -70,6 +89,10 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
           <DropdownMenuItem onClick={() => setBalanceOpen(true)}>
             <DollarSign className="mr-2 h-4 w-4" />
             Update Balance
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setBankOpen(true)}>
+            <Building2 className="mr-2 h-4 w-4" />
+            Edit Bank Details
           </DropdownMenuItem>
           <DropdownMenuItem onClick={handleToggleAdmin}>
             <Shield className="mr-2 h-4 w-4" />
@@ -107,6 +130,58 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 "Update"
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={bankOpen} onOpenChange={setBankOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Update Bank Details</DialogTitle>
+            <DialogDescription>
+              Edit bank information for {user.full_name}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="bankName">Bank Name</Label>
+              <Input
+                id="bankName"
+                value={bankDetails.bank_name}
+                onChange={(e) => setBankDetails({ ...bankDetails, bank_name: e.target.value })}
+                placeholder="e.g. First Bank"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="accountNumber">Account Number</Label>
+              <Input
+                id="accountNumber"
+                value={bankDetails.account_number}
+                onChange={(e) => setBankDetails({ ...bankDetails, account_number: e.target.value })}
+                placeholder="0123456789"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="accountName">Account Name</Label>
+              <Input
+                id="accountName"
+                value={bankDetails.account_name}
+                onChange={(e) => setBankDetails({ ...bankDetails, account_name: e.target.value })}
+                placeholder="Account Holder Name"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setBankOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleUpdateBankDetails} disabled={isLoading}>
+              {isLoading ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                "Save Details"
               )}
             </Button>
           </DialogFooter>
