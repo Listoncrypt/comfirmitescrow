@@ -61,20 +61,20 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-          ? "border-b border-border/40 bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/60"
-          : "bg-transparent"
+        ? "border-b border-border/40 bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        : "bg-transparent"
         }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo.png"
-            alt="Confirmit Logo"
+            alt="Confirmdeal Logo"
             width={40}
             height={40}
             className="rounded-lg"
           />
-          <span className="text-xl font-bold text-foreground">Confirmit</span>
+          <span className="text-xl font-bold text-foreground">Confirmdeal</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -84,8 +84,8 @@ export function Header() {
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
               className={`relative px-4 py-2 text-sm font-medium transition-colors ${activeSection === item.href.replace("#", "")
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               {item.label}
@@ -116,12 +116,12 @@ export function Header() {
             <div className="mb-8 flex items-center gap-2">
               <Image
                 src="/logo.png"
-                alt="Confirmit Logo"
+                alt="Confirmdeal Logo"
                 width={36}
                 height={36}
                 className="rounded-lg"
               />
-              <span className="text-lg font-bold text-foreground">Confirmit</span>
+              <span className="text-lg font-bold text-foreground">Confirmdeal</span>
             </div>
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
@@ -130,8 +130,8 @@ export function Header() {
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`rounded-lg px-4 py-3 text-lg font-medium transition-all ${activeSection === item.href.replace("#", "")
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground hover:bg-muted"
+                    ? "bg-primary/10 text-primary"
+                    : "text-foreground hover:bg-muted"
                     }`}
                 >
                   {item.label}

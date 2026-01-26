@@ -45,15 +45,15 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
-                alt="Confirmit Logo"
+                alt="Confirmdeal Logo"
                 width={40}
                 height={40}
                 className="rounded-lg"
               />
-              <span className="text-xl font-bold text-foreground">Confirmit</span>
+              <span className="text-xl font-bold text-foreground">Confirmdeal</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Secure every deal with confidence. Confirmit is your trusted partner for safe and transparent escrow transactions worldwide.
+              Secure every deal with confidence. Confirmdeal is your trusted partner for safe and transparent escrow transactions worldwide.
             </p>
             <div className="mt-6 flex gap-4">
               {socialLinks.map((social) => (
@@ -124,7 +124,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Confirmit. All rights reserved.
+            &copy; {new Date().getFullYear()} Comfirmdeal. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-primary">

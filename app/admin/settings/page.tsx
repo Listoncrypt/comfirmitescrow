@@ -231,7 +231,7 @@ export default async function AdminSettingsPage() {
                   <Input
                     id="escrow_account_name"
                     name="escrow_account_name"
-                    placeholder="Confirmit Escrow Ltd"
+                    placeholder="Confirmdeal Escrow Ltd"
                     defaultValue={settings.escrow_account_name as string || ""}
                   />
                 </div>
@@ -308,7 +308,7 @@ export default async function AdminSettingsPage() {
                   id="support_email"
                   name="support_email"
                   type="email"
-                  placeholder="comfirmitescrow@gmail.com"
+                  placeholder="comfirmdealescrow@gmail.com"
                   defaultValue={settings.support_email as string || ""}
                 />
               </div>

@@ -56,7 +56,7 @@ export function TestimonialsSection() {
             Trusted by Thousands
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            See what our customers have to say about their experience with Confirmit.
+            See what our customers have to say about their experience with Confirmdeal.
           </p>
         </div>
 
@@ -95,9 +95,8 @@ export function TestimonialsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 w-2 rounded-full transition-colors ${
-                    index === currentIndex ? "bg-primary" : "bg-border"
-                  }`}
+                  className={`h-2 w-2 rounded-full transition-colors ${index === currentIndex ? "bg-primary" : "bg-border"
+                    }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

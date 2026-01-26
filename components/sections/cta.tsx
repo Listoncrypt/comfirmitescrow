@@ -16,7 +16,7 @@ export function CTASection() {
             Ready to Secure Your Next Transaction?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-pretty text-lg text-primary-foreground/80">
-            Join thousands of satisfied users who trust Confirmit for their escrow needs.
+            Join thousands of satisfied users who trust Confirmdeal for their escrow needs.
             Start your first secure transaction today.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

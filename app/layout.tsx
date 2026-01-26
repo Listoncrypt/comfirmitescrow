@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Confirmit - Secure Every Deal with Confidence',
-  description: 'Confirmit is your trusted escrow service platform. Secure payments, easy dispute resolution, and real-time notifications for hassle-free transactions.',
+  title: 'Confirmdeal - Secure Every Deal with Confidence',
+  description: 'Confirmdeal is your trusted escrow service platform. Secure payments, easy dispute resolution, and real-time notifications for hassle-free transactions.',
   generator: 'v0.app',
   icons: {
     icon: '/icon.png',

@@ -32,7 +32,7 @@ export function FeaturesSection() {
             Our Features
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Discover what makes Confirmit the most trusted escrow platform.
+            Discover what makes Confirmdeal the most trusted escrow platform.
           </p>
         </div>
 
@@ -40,9 +40,8 @@ export function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className={`flex flex-col gap-8 rounded-2xl border border-border bg-card p-8 md:flex-row md:items-center ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
+              className={`flex flex-col gap-8 rounded-2xl border border-border bg-card p-8 md:flex-row md:items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+                }`}
             >
               <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                 <feature.icon className="h-10 w-10" />

@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Mail, Send } from "lucide-react"
 import { useState } from "react"
 
-const SUPPORT_EMAIL = "comfirmitescrow@gmail.com"
+const SUPPORT_EMAIL = "confirmdealescrow@gmail.com"
 
 const contactInfo = [
   {

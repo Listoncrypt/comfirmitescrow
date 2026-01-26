@@ -36,13 +36,13 @@ export function HowItWorksSection() {
             How Escrow Works
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Simple, secure, and straightforward. Here&apos;s how Confirmit protects your transactions.
+            Simple, secure, and straightforward. Here&apos;s how Confirmdeal protects your transactions.
           </p>
         </div>
 
         <div className="relative mt-16">
           <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-border lg:block" />
-          
+
           <div className="grid gap-8 lg:grid-cols-4">
             {steps.map((step, index) => (
               <div key={step.title} className="relative">

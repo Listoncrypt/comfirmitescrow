@@ -31,7 +31,7 @@ export function BenefitsSection() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Benefits of Confirmit
+            Benefits of Confirmdeal
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Experience secure and hassle-free transactions with our trusted escrow platform.

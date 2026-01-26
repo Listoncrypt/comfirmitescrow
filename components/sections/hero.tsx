@@ -85,8 +85,8 @@ export function HeroSection() {
               <span className="relative block overflow-hidden">
                 <span
                   className={`inline-block transition-all duration-500 ease-out ${isAnimating
-                      ? "translate-y-full opacity-0"
-                      : "translate-y-0 opacity-100"
+                    ? "translate-y-full opacity-0"
+                    : "translate-y-0 opacity-100"
                     }`}
                 >
                   {headlines[currentHeadline].text}{" "}
@@ -116,8 +116,8 @@ export function HeroSection() {
                     }, 500)
                   }}
                   className={`h-1.5 rounded-full transition-all duration-300 ${index === currentHeadline
-                      ? "w-8 bg-primary"
-                      : "w-4 bg-primary/30 hover:bg-primary/50"
+                    ? "w-8 bg-primary"
+                    : "w-4 bg-primary/30 hover:bg-primary/50"
                     }`}
                   aria-label={`Go to headline ${index + 1}`}
                 />
@@ -125,7 +125,7 @@ export function HeroSection() {
             </div>
 
             <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
-              Confirmit provides a trusted escrow platform that protects both buyers and sellers.
+              Confirmdeal provides a trusted escrow platform that protects both buyers and sellers.
               Experience secure transactions with transparent processes and peace of mind.
             </p>
 
@@ -152,8 +152,8 @@ export function HeroSection() {
                     <Label
                       htmlFor="selling"
                       className={`flex cursor-pointer items-center justify-center rounded-lg border-2 px-4 py-3 text-sm font-medium transition-colors ${role === "selling"
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border bg-background text-muted-foreground hover:bg-secondary"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-background text-muted-foreground hover:bg-secondary"
                         }`}
                     >
                       {"I'm Selling"}
@@ -164,8 +164,8 @@ export function HeroSection() {
                     <Label
                       htmlFor="buying"
                       className={`flex cursor-pointer items-center justify-center rounded-lg border-2 px-4 py-3 text-sm font-medium transition-colors ${role === "buying"
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border bg-background text-muted-foreground hover:bg-secondary"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-background text-muted-foreground hover:bg-secondary"
                         }`}
                     >
                       {"I'm Buying"}
@@ -176,8 +176,8 @@ export function HeroSection() {
                     <Label
                       htmlFor="brokering"
                       className={`flex cursor-pointer items-center justify-center rounded-lg border-2 px-4 py-3 text-sm font-medium transition-colors ${role === "brokering"
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : "border-border bg-background text-muted-foreground hover:bg-secondary"
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-background text-muted-foreground hover:bg-secondary"
                         }`}
                     >
                       {"I'm Brokering"}
