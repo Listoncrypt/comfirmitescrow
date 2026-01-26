@@ -31,6 +31,10 @@ export default async function MakePaymentPage() {
                 </p>
             </div>
 
+            {/* Active Deal Chat Button */}
+            <ActiveDealButton supabase={supabase} userId={user.id} />
+
+
             <div className="grid gap-6 md:grid-cols-2">
                 {/* Payment Details Card */}
                 <Card className="md:col-span-2">
@@ -124,6 +128,35 @@ export default async function MakePaymentPage() {
                     </CardContent>
                 </Card>
             </div>
+        </div>
+    );
+}
+import { MessageSquare } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
+async function ActiveDealButton({ supabase, userId }: { supabase: any; userId: string }) {
+    // Find the most recent active deal (awaiting_payment or in_escrow)
+    const { data: deals } = await supabase
+        .from("deals")
+        .select("id, title, status")
+        .or("buyer_id.eq." + userId + ",seller_id.eq." + userId)
+        .in("status", ["awaiting_payment", "in_escrow"])
+        .order("created_at", { ascending: false })
+        .limit(1);
+
+    const activeDeal = deals?.[0];
+
+    if (!activeDeal) return null;
+
+    return (
+        <div className="flex justify-end">
+            <Button asChild className="gap-2 bg-blue-600 hover:bg-blue-700 text-white">
+                <Link href={`/dashboard/deals/${activeDeal.id}`}>
+                    <MessageSquare className="h-4 w-4" />
+                    Back to Chat: {activeDeal.title || "Deal"}
+                </Link>
+            </Button>
         </div>
     );
 }
