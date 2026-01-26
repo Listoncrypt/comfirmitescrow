@@ -54,8 +54,8 @@ export default async function MakePaymentPage() {
                                             Bank Name
                                         </label>
                                         <div className="flex items-center justify-between rounded-lg border bg-muted/50 p-3">
-                                            <span className="font-semibold text-lg">{(settings as any).escrow_bank_name}</span>
-                                            <CopyButton text={(settings as any).escrow_bank_name} />
+                                            <span className="font-semibold text-lg">{(settings as any).bank_name || (settings as any).escrow_bank_name}</span>
+                                            <CopyButton text={(settings as any).bank_name || (settings as any).escrow_bank_name || ""} />
                                         </div>
                                     </div>
 
@@ -66,8 +66,8 @@ export default async function MakePaymentPage() {
                                             Account Number
                                         </label>
                                         <div className="flex items-center justify-between rounded-lg border bg-muted/50 p-3">
-                                            <span className="font-semibold text-lg font-mono">{(settings as any).escrow_account_number}</span>
-                                            <CopyButton text={(settings as any).escrow_account_number} />
+                                            <span className="font-semibold text-lg font-mono">{(settings as any).account_number || (settings as any).escrow_account_number}</span>
+                                            <CopyButton text={(settings as any).account_number || (settings as any).escrow_account_number || ""} />
                                         </div>
                                     </div>
 
@@ -78,8 +78,8 @@ export default async function MakePaymentPage() {
                                             Account Name
                                         </label>
                                         <div className="flex items-center justify-between rounded-lg border bg-muted/50 p-3">
-                                            <span className="font-semibold text-lg">{(settings as any).escrow_account_name}</span>
-                                            <CopyButton text={(settings as any).escrow_account_name} />
+                                            <span className="font-semibold text-lg">{(settings as any).account_name || (settings as any).escrow_account_name}</span>
+                                            <CopyButton text={(settings as any).account_name || (settings as any).escrow_account_name || ""} />
                                         </div>
                                     </div>
                                 </div>
