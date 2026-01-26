@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { requestWithdrawal } from "@/lib/actions/withdrawals";
 import { Wallet, Building2 } from "lucide-react";
 
+// Update interface
 interface WithdrawalFormProps {
     balance: number;
     disabled: boolean;
@@ -21,10 +22,18 @@ interface WithdrawalFormProps {
         wallet_address?: string;
         payment_method?: "bank" | "crypto";
     };
+    linkedBankDetails?: {
+        bank_name: string;
+        account_number: string;
+        account_name: string;
+    };
 }
 
-export function WithdrawalForm({ balance, disabled, defaultValues }: WithdrawalFormProps) {
-    const [paymentMethod, setPaymentMethod] = useState<"bank" | "crypto">(defaultValues?.payment_method || "bank");
+export function WithdrawalForm({ balance, disabled, defaultValues, linkedBankDetails }: WithdrawalFormProps) {
+    const [paymentMethod, setPaymentMethod] = useState<"bank" | "crypto">(
+        // Use linked details if present, otherwise default to previous or bank
+        linkedBankDetails ? "bank" : (defaultValues?.payment_method || "bank")
+    );
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     async function handleSubmit(formData: FormData) {
@@ -70,13 +79,23 @@ export function WithdrawalForm({ balance, disabled, defaultValues }: WithdrawalF
             </div>
 
             {/* Payment Method Tabs */}
-            <Tabs value={paymentMethod} onValueChange={(v) => setPaymentMethod(v as "bank" | "crypto")} className="w-full">
+            <Tabs value={paymentMethod} onValueChange={(v) => {
+                // If linked bank details are set, prevent detailed switching to crypto if we want to enforce bank?
+                // User requirement: "must prompt to withdraw to THAT account". 
+                // Implicitly blocking other methods?
+                // Let's assume yes for safety, but allow switching back to Bank if they clicked Crypto.
+                // Actually, if linkedBankDetails exists, we might want to DISABLED the crypto trigger?
+                // Let's prevent switching if saving is strict. 
+                // "prevent sending to another account if they get hacked" -> implies ONLY allow the verified one.
+                if (linkedBankDetails && v === 'crypto') return; // Strict enforcement
+                setPaymentMethod(v as "bank" | "crypto")
+            }} className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="bank" className="flex items-center gap-2">
                         <Building2 className="h-4 w-4" />
                         Bank Account
                     </TabsTrigger>
-                    <TabsTrigger value="crypto" className="flex items-center gap-2">
+                    <TabsTrigger value="crypto" className="flex items-center gap-2" disabled={!!linkedBankDetails} title={linkedBankDetails ? "Bank withdrawal required" : ""}>
                         <Wallet className="h-4 w-4" />
                         Crypto Wallet
                     </TabsTrigger>
@@ -84,6 +103,12 @@ export function WithdrawalForm({ balance, disabled, defaultValues }: WithdrawalF
 
                 {/* Bank Account Fields */}
                 <TabsContent value="bank" className="space-y-4 mt-4">
+                    {linkedBankDetails && (
+                        <div className="bg-emerald-50 text-emerald-700 text-sm p-3 rounded-md border border-emerald-100 mb-4 flex items-center gap-2">
+                            <Building2 className="h-4 w-4" />
+                            <span>Withdrawal locked to your verified linked account.</span>
+                        </div>
+                    )}
                     <div className="space-y-2">
                         <Label htmlFor="bank_name">Bank Name</Label>
                         <Input
@@ -91,7 +116,9 @@ export function WithdrawalForm({ balance, disabled, defaultValues }: WithdrawalF
                             name="bank_name"
                             placeholder="Enter your bank name"
                             required={paymentMethod === "bank"}
-                            defaultValue={defaultValues?.bank_name}
+                            defaultValue={linkedBankDetails?.bank_name || defaultValues?.bank_name}
+                            readOnly={!!linkedBankDetails}
+                            className={linkedBankDetails ? "bg-muted text-muted-foreground" : ""}
                         />
                     </div>
                     <div className="space-y-2">
@@ -101,7 +128,9 @@ export function WithdrawalForm({ balance, disabled, defaultValues }: WithdrawalF
                             name="account_number"
                             placeholder="Enter your account number"
                             required={paymentMethod === "bank"}
-                            defaultValue={defaultValues?.account_number}
+                            defaultValue={linkedBankDetails?.account_number || defaultValues?.account_number}
+                            readOnly={!!linkedBankDetails}
+                            className={linkedBankDetails ? "bg-muted text-muted-foreground" : ""}
                         />
                     </div>
                     <div className="space-y-2">
@@ -111,7 +140,9 @@ export function WithdrawalForm({ balance, disabled, defaultValues }: WithdrawalF
                             name="account_name"
                             placeholder="Enter the account holder name"
                             required={paymentMethod === "bank"}
-                            defaultValue={defaultValues?.account_name}
+                            defaultValue={linkedBankDetails?.account_name || defaultValues?.account_name}
+                            readOnly={!!linkedBankDetails}
+                            className={linkedBankDetails ? "bg-muted text-muted-foreground" : ""}
                         />
                     </div>
                 </TabsContent>

@@ -148,6 +148,52 @@ export default function RegisterPage() {
               </div>
             </div>
 
+            <div className="space-y-4 rounded-lg bg-muted/50 p-4 border">
+              <div className="space-y-1">
+                <h3 className="font-medium">Bank Account for Withdrawals</h3>
+                <p className="text-xs text-muted-foreground">
+                  Security Requirement: This account MUST belong to you. The account name must match your registration name.
+                  You cannot change this easily later.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="bankName">Bank Name</Label>
+                <Input
+                  id="bankName"
+                  name="bankName"
+                  placeholder="e.g. First Bank"
+                  required
+                  disabled={isLoading}
+                />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="accountNumber">Account Number</Label>
+                  <Input
+                    id="accountNumber"
+                    name="accountNumber"
+                    placeholder="e.g. 0123456789"
+                    required
+                    disabled={isLoading}
+                    minLength={10}
+                    maxLength={10}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="accountName">Account Name</Label>
+                  <Input
+                    id="accountName"
+                    name="accountName"
+                    placeholder="Must match your name"
+                    required
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input

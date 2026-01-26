@@ -12,6 +12,7 @@ import {
   LogOut,
   X,
   Menu,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -25,6 +26,7 @@ const navigation = [
   { name: "My Deals", href: "/dashboard/deals", icon: FileText },
   { name: "Make Payment", href: "/dashboard/make-payment", icon: Wallet },
   { name: "Withdrawals", href: "/dashboard/withdrawals", icon: Wallet },
+  { name: "Account Info", href: "/dashboard/profile", icon: User },
   { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
@@ -89,19 +91,34 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
           </div>
 
           {/* User info */}
-          <div className="px-6 py-4 border-b">
-            <p className="text-sm font-medium text-foreground">
-              {profile.full_name}
-            </p>
-            <p className="text-xs text-muted-foreground truncate">
-              {profile.email}
-            </p>
-            <div className="mt-2 flex items-center gap-2">
+          <div className="px-6 py-4 border-b space-y-3">
+            <div>
+              <p className="text-sm font-medium text-foreground">
+                {profile.full_name}
+              </p>
+              <p className="text-xs text-muted-foreground truncate">
+                {profile.email}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2">
               <div className="text-sm font-semibold text-primary">
-                ₦{profile.balance?.toFixed(2) || "0.00"}
+                ₦{profile.balance?.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) || "0.00"}
               </div>
               <span className="text-xs text-muted-foreground">Balance</span>
             </div>
+
+            {profile.bank_name && (
+              <div className="pt-2 border-t">
+                <p className="text-[10px] uppercase text-muted-foreground font-semibold">Linked Account</p>
+                <p className="text-xs font-medium truncate" title={profile.bank_name}>
+                  {profile.bank_name}
+                </p>
+                <p className="text-xs text-muted-foreground font-mono truncate">
+                  {profile.account_number}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Navigation */}

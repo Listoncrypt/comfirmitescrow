@@ -1,8 +1,6 @@
 "use client";
 
-import React from "react"
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,14 +11,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Loader2, CheckCircle2 } from "lucide-react";
-import { updateProfile } from "@/lib/actions/auth";
+import { Loader2, CheckCircle2, Lock } from "lucide-react";
+import { changePassword } from "@/lib/actions/auth";
 import { createClient } from "@/lib/supabase/client";
 
 export default function SettingsPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [profile, setProfile] = useState<any>(null);
   const supabase = createClient();
 
@@ -41,24 +36,6 @@ export default function SettingsPage() {
     loadProfile();
   }, []);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setIsLoading(true);
-    setSuccess(false);
-    setError(null);
-
-    const formData = new FormData(e.currentTarget);
-    const result = await updateProfile(formData);
-
-    if (result?.error) {
-      setError(result.error);
-    } else {
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 3000);
-    }
-    setIsLoading(false);
-  }
-
   if (!profile) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -72,95 +49,26 @@ export default function SettingsPage() {
       <div>
         <h1 className="text-2xl font-bold text-foreground">Settings</h1>
         <p className="text-muted-foreground">
-          Manage your account settings and preferences
+          Manage your account security and preferences. for Profile updates, see Account Info.
         </p>
       </div>
 
       <div className="grid gap-6 max-w-2xl">
+        {/* Password Update Card */}
         <Card>
           <CardHeader>
-            <CardTitle>Profile Information</CardTitle>
-            <CardDescription>
-              Update your personal information
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            {error && (
-              <div className="mb-4 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
-                {error}
-              </div>
-            )}
-            {success && (
-              <div className="mb-4 rounded-lg bg-green-500/10 p-3 text-sm text-green-600 flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4" />
-                Profile updated successfully
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="fullName">Full Name</Label>
-                <Input
-                  id="fullName"
-                  name="fullName"
-                  defaultValue={profile.full_name || ""}
-                  disabled={isLoading}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={profile.email || ""}
-                  disabled
-                  className="bg-muted"
-                />
-                <p className="text-xs text-muted-foreground">
-                  Email cannot be changed
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="telegramHandle">Telegram Handle (Optional)</Label>
-                <Input
-                  id="telegramHandle"
-                  name="telegramHandle"
-                  placeholder="@username"
-                  defaultValue={profile.telegram_handle || ""}
-                  disabled={isLoading}
-                />
-                <p className="text-xs text-muted-foreground">
-                  Used for additional communication
-                </p>
-              </div>
-
-              <Button type="submit" disabled={isLoading}>
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Saving...
-                  </>
-                ) : (
-                  "Save Changes"
-                )}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-
-        {/* Password Update Card */}
-        < Card >
-          <CardHeader>
-            <CardTitle>Security</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <Lock className="h-5 w-5" />
+              Security
+            </CardTitle>
             <CardDescription>Update your password</CardDescription>
           </CardHeader>
           <CardContent>
             <ChangePasswordForm />
           </CardContent>
-        </Card >
+        </Card>
 
+        {/* Account Balance Card */}
         <Card>
           <CardHeader>
             <CardTitle>Account Balance</CardTitle>
@@ -182,13 +90,10 @@ export default function SettingsPage() {
             </div>
           </CardContent>
         </Card>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 }
-
-import { changePassword } from "@/lib/actions/auth";
-import { Lock } from "lucide-react";
 
 function ChangePasswordForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -208,7 +113,6 @@ function ChangePasswordForm() {
       setError(result.error);
     } else {
       setSuccess(true);
-      // Reset form
       e.currentTarget.reset();
       setTimeout(() => setSuccess(false), 3000);
     }

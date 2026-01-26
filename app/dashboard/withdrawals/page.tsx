@@ -118,6 +118,11 @@ export default async function WithdrawalsPage() {
                 balance={profile?.balance || 0}
                 disabled={!profile?.balance || profile.balance < 10}
                 defaultValues={defaultValues}
+                linkedBankDetails={profile?.bank_name ? {
+                  bank_name: profile.bank_name,
+                  account_number: profile.account_number,
+                  account_name: profile.account_name
+                } : undefined}
               />
             )}
           </CardContent>
