@@ -482,19 +482,42 @@ export async function deleteUser(userId: string, adminKey: string) {
   }
 
   // Verify the unique key
-  if (adminKey !== "franciscomfirmit@01") {
+  if (adminKey !== "comfirmit@francis0813") {
     return { error: "Invalid Admin Key. Deletion denied." };
   }
 
   const supabase = await createClient();
 
+  // 1. Delete withdrawals
+  const { error: withdrawalsError } = await supabase
+    .from("withdrawals")
+    .delete()
+    .eq("user_id", userId);
+
+  if (withdrawalsError) {
+    console.error("Error deleting withdrawals:", withdrawalsError);
+    // Continue anyway, likely constraint will catch if critical
+  }
+
+  // 2. Delete deals where user is buyer or seller
+  // Note: This is destructive. Ideally we should archive, but for "Delete User" we wipe.
+  const { error: dealsError } = await supabase
+    .from("deals")
+    .delete()
+    .or(`buyer_id.eq.${userId},seller_id.eq.${userId}`);
+
+  if (dealsError) {
+    console.error("Error deleting deals:", dealsError);
+  }
+
+  // 3. Delete profile
   const { error } = await supabase
     .from("profiles")
     .delete()
     .eq("id", userId);
 
   if (error) {
-    return { error: error.message };
+    return { error: `Failed to delete account: ${error.message}` };
   }
 
   revalidatePath("/admin/users");

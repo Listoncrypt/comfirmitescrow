@@ -234,34 +234,36 @@ export function AdminUserActions({ user, onSuccess }: AdminUserActionsProps) {
               This action cannot be undone. Enter the Admin Key to confirm.
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-4 py-4">
-            <div className="space-y-2">
-              <Label htmlFor="adminKey">Admin Key</Label>
-              {/* Hidden input to trick browser autofill heuristics */}
-              <input type="text" name="fake-username" style={{ display: "none" }} autoComplete="username" />
-              <Input
-                id="adminKey"
-                type="password"
-                autoComplete="new-password"
-                data-1p-ignore
-                placeholder="Enter unique delete key"
-                value={adminKey}
-                onChange={(e) => setAdminKey(e.target.value)}
-              />
+          <form autoComplete="off" onSubmit={(e) => { e.preventDefault(); handleDeleteUser(); }}>
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="adminKey">Admin Key</Label>
+                {/* Hidden input to trick browser autofill heuristics */}
+                <input type="text" name="fake-username" style={{ display: "none" }} autoComplete="username" />
+                <Input
+                  id="adminKey"
+                  type="password"
+                  autoComplete="new-password"
+                  data-1p-ignore
+                  placeholder="Enter unique delete key"
+                  value={adminKey}
+                  onChange={(e) => setAdminKey(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setDeleteOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleDeleteUser} disabled={isLoading} variant="destructive">
-              {isLoading ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : (
-                "Delete User"
-              )}
-            </Button>
-          </DialogFooter>
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={() => setDeleteOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={isLoading} variant="destructive">
+                {isLoading ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  "Delete User"
+                )}
+              </Button>
+            </DialogFooter>
+          </form>
         </DialogContent>
       </Dialog>
     </>
