@@ -75,6 +75,9 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
     } else {
       setDeleteOpen(false);
       setAdminKey("");
+      // Force reload to prevent client-side state issues after deletion
+      window.location.reload();
+      return;
     }
     setIsLoading(false);
     router.refresh();
