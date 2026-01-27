@@ -49,14 +49,23 @@ export default async function AdminOverviewPage() {
     .select("*", { count: "exact", head: true })
     .eq("status", "pending");
 
-  // Get total escrow value
+  // Get total escrow value (Deals + User Balances)
   const { data: fundedDeals } = await supabase
     .from("deals")
     .select("amount")
-    .in("status", ["funded", "delivered", "disputed"]);
+    .in("status", ["funded", "in_escrow", "delivered", "disputed"]);
 
-  const totalEscrow =
+  const { data: userBalances } = await supabase
+    .from("profiles")
+    .select("balance");
+
+  const dealsValue =
     fundedDeals?.reduce((sum, d) => sum + (d.amount || 0), 0) || 0;
+
+  const balancesValue =
+    userBalances?.reduce((sum, p) => sum + (p.balance || 0), 0) || 0;
+
+  const totalEscrow = dealsValue + balancesValue;
 
   // Get recent deals
   const { data: recentDeals } = await supabase
@@ -127,7 +136,7 @@ export default async function AdminOverviewPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">₦{totalEscrow.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground">In active deals</p>
+            <p className="text-xs text-muted-foreground">In deals & wallets</p>
           </CardContent>
         </Card>
       </div>

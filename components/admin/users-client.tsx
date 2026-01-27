@@ -24,17 +24,22 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 
 // Helper component for highlighting text
+// Helper component for highlighting text
 function HighlightText({ text, highlight }: { text: string; highlight: string }) {
-    if (!highlight.trim()) {
+    if (!highlight || !highlight.trim()) {
         return <span>{text}</span>;
     }
 
-    const parts = text.split(new RegExp(`(${highlight})`, "gi"));
+    const trimmedHighlight = highlight.trim();
+    // Escape special regex characters
+    const escapedHighlight = trimmedHighlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    const parts = text.split(new RegExp(`(${escapedHighlight})`, "gi"));
 
     return (
         <span>
             {parts.map((part, i) =>
-                part.toLowerCase() === highlight.toLowerCase() ? (
+                part.toLowerCase() === trimmedHighlight.toLowerCase() ? (
                     <span key={i} className="bg-yellow-200 dark:bg-yellow-900/50 font-bold">
                         {part}
                     </span>
@@ -65,8 +70,10 @@ export function UsersClient({ initialUsers }: { initialUsers: Profile[] }) {
     const filteredUsers = initialUsers.filter((user) => {
         if (!query) return true;
         const lowerQuery = query.toLowerCase().trim();
-        const emailMatch = user.email?.toLowerCase().includes(lowerQuery);
-        const nameMatch = user.full_name?.toLowerCase().includes(lowerQuery);
+        if (!lowerQuery) return true; // Handle case where query is just whitespace
+
+        const emailMatch = user.email?.toLowerCase().includes(lowerQuery) || false;
+        const nameMatch = user.full_name?.toLowerCase().includes(lowerQuery) || false;
         return emailMatch || nameMatch;
     });
 
