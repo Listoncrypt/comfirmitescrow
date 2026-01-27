@@ -237,9 +237,13 @@ export function AdminUserActions({ user, onSuccess }: AdminUserActionsProps) {
           <div className="space-y-4 py-4">
             <div className="space-y-2">
               <Label htmlFor="adminKey">Admin Key</Label>
+              {/* Hidden input to trick browser autofill heuristics */}
+              <input type="text" name="fake-username" style={{ display: "none" }} autoComplete="username" />
               <Input
                 id="adminKey"
                 type="password"
+                autoComplete="new-password"
+                data-1p-ignore
                 placeholder="Enter unique delete key"
                 value={adminKey}
                 onChange={(e) => setAdminKey(e.target.value)}
