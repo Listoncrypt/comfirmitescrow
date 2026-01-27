@@ -37,6 +37,9 @@ export interface Database {
           role: UserRole
           account_status: AccountStatus
           balance: number
+          full_name?: string | null
+          bank_name?: string | null
+          account_number?: string | null
           created_at: string
           updated_at: string
         }
@@ -48,6 +51,9 @@ export interface Database {
           role?: UserRole
           account_status?: AccountStatus
           balance?: number
+          full_name?: string | null
+          bank_name?: string | null
+          account_number?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -59,6 +65,9 @@ export interface Database {
           role?: UserRole
           account_status?: AccountStatus
           balance?: number
+          full_name?: string | null
+          bank_name?: string | null
+          account_number?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -122,6 +131,7 @@ export interface Database {
           deal_id: string
           sender_id: string
           content: string
+          image_url: string | null
           created_at: string
         }
         Insert: {
@@ -129,6 +139,7 @@ export interface Database {
           deal_id: string
           sender_id: string
           content: string
+          image_url?: string | null
           created_at?: string
         }
         Update: {
@@ -136,6 +147,7 @@ export interface Database {
           deal_id?: string
           sender_id?: string
           content?: string
+          image_url?: string | null
           created_at?: string
         }
       }
@@ -193,6 +205,8 @@ export interface Database {
           escrow_account_number: string
           escrow_account_name: string
           escrow_instructions: string | null
+          usdt_network?: string | null
+          usdt_wallet_address?: string | null
           updated_by: string | null
           updated_at: string
         }
@@ -202,6 +216,8 @@ export interface Database {
           escrow_account_number: string
           escrow_account_name: string
           escrow_instructions?: string | null
+          usdt_network?: string | null
+          usdt_wallet_address?: string | null
           updated_by?: string | null
           updated_at?: string
         }
@@ -211,6 +227,8 @@ export interface Database {
           escrow_account_number?: string
           escrow_account_name?: string
           escrow_instructions?: string | null
+          usdt_network?: string | null
+          usdt_wallet_address?: string | null
           updated_by?: string | null
           updated_at?: string
         }

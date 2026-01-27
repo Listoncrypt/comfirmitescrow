@@ -126,7 +126,7 @@ export function DealChat({
 
           setMessages((prev) => [
             ...prev,
-            { ...payload.new, sender } as Message,
+            { ...payload.new, sender } as any as Message,
           ]);
         }
       )
@@ -207,7 +207,7 @@ export function DealChat({
     const { error } = await supabase.from("messages").insert({
       deal_id: dealId,
       sender_id: userId,
-      content: newMessage.trim() || (imageUrl ? "📷 Payment Receipt" : ""),
+      content: newMessage.trim(),
       image_url: imageUrl,
     });
 
