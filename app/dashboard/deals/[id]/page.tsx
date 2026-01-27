@@ -22,6 +22,7 @@ import {
   Calendar,
   DollarSign,
   MessageSquare,
+  Truck,
 } from "lucide-react";
 import { format } from "date-fns";
 import { DealActions } from "@/components/dashboard/deal-actions";
@@ -221,148 +222,156 @@ export default async function DealDetailPage({
                   </div>
                 </div>
 
-                <div>
-                  <p className="text-sm text-muted-foreground">Created</p>
-                  <p className="font-medium">
-                    {format(new Date(deal.created_at), "MMM d, yyyy")}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/10">
-                  <AlertCircle className="h-5 w-5 text-orange-500" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Inspection</p>
-                  <p className="font-medium">
-                    {(deal as any).inspection_period_days || 3} Days
-                  </p>
-                </div>
-              </div>
-
-              {(deal as any).delivery_period && (
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10">
-                    <Truck className="h-5 w-5 text-blue-500" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                    <Calendar className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Est. Delivery</p>
+                    <p className="text-sm text-muted-foreground">Created</p>
                     <p className="font-medium">
-                      {(deal as any).delivery_period} Days
+                      {format(new Date(deal.created_at), "MMM d, yyyy")}
                     </p>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/10">
+                    <AlertCircle className="h-5 w-5 text-orange-500" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Inspection</p>
+                    <p className="font-medium">
+                      {(deal as any).inspection_period_days || 3} Days
+                    </p>
+                  </div>
+                </div>
+
+                {(deal as any).delivery_period && (
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10">
+                      <Truck className="h-5 w-5 text-blue-500" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Est. Delivery</p>
+                      <p className="font-medium">
+                        {(deal as any).delivery_period} Days
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10">
+                    <User className="h-5 w-5 text-blue-500" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Your Role</p>
+                    <p className="font-medium">{isBuyer ? "Buyer" : "Seller"}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10">
+                    <User className="h-5 w-5 text-green-500" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">
+                      {isBuyer ? "Seller" : "Buyer"}
+                    </p>
+                    <p className="font-medium">
+                      {counterparty?.full_name ||
+                        deal.counterparty_email ||
+                        "Pending..."}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {deal.dispute_reason && (
+                <>
+                  <Separator />
+                  <div className="rounded-lg bg-destructive/10 p-4">
+                    <h4 className="font-medium text-destructive mb-1">
+                      Dispute Reason
+                    </h4>
+                    <p className="text-sm">{deal.dispute_reason}</p>
+                  </div>
+                </>
               )}
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10">
-                  <User className="h-5 w-5 text-blue-500" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Your Role</p>
-                  <p className="font-medium">{isBuyer ? "Buyer" : "Seller"}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10">
-                  <User className="h-5 w-5 text-green-500" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">
-                    {isBuyer ? "Seller" : "Buyer"}
-                  </p>
-                  <p className="font-medium">
-                    {counterparty?.full_name ||
-                      deal.counterparty_email ||
-                      "Pending..."}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {deal.dispute_reason && (
-              <>
-                <Separator />
-                <div className="rounded-lg bg-destructive/10 p-4">
-                  <h4 className="font-medium text-destructive mb-1">
-                    Dispute Reason
-                  </h4>
-                  <p className="text-sm">{deal.dispute_reason}</p>
-                </div>
-              </>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Payment Instructions - Show for buyer when awaiting payment */}
-        {deal.status === "awaiting_payment" && isBuyer && (
-          <PaymentInstructions
-            dealAmount={deal.amount || 0}
-            dealTitle={deal.title || "Deal"}
-          />
-        )}
-
-        {/* Chat */}
-        {deal.buyer_id && deal.seller_id && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MessageSquare className="h-5 w-5" />
-                Messages
-              </CardTitle>
-              <CardDescription>
-                Communicate with the other party
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DealChat
-                dealId={deal.id}
-                userId={user.id}
-                buyerId={deal.buyer_id}
-                sellerId={deal.seller_id}
-                dealStatus={deal.status}
-              />
             </CardContent>
           </Card>
-        )}
-      </div>
 
-      {/* Timeline */}
-      <div>
-        <Card>
-          <CardHeader>
-            <CardTitle>Timeline</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <TimelineItem
-                title="Deal Created"
-                date={deal.created_at}
-                completed
+          {/* Payment Instructions - Show for buyer when awaiting payment */}
+          {
+            deal.status === "awaiting_payment" && isBuyer && (
+              <PaymentInstructions
+                dealAmount={deal.amount || 0}
+                dealTitle={deal.title || "Deal"}
               />
-              <TimelineItem
-                title="Both Parties Joined"
-                date={deal.buyer_id && deal.seller_id ? deal.created_at : null}
-                completed={!!deal.buyer_id && !!deal.seller_id}
-              />
-              <TimelineItem
-                title="Deal Commences in Chat"
-                date={deal.buyer_id && deal.seller_id ? deal.created_at : null}
-                completed={!!deal.buyer_id && !!deal.seller_id}
-              />
-              <TimelineItem
-                title="Deal Finalised"
-                date={deal.completed_at}
-                completed={deal.status === "completed" || deal.status === "refunded"}
-                isLast
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+            )
+          }
+
+          {/* Chat */}
+          {
+            deal.buyer_id && deal.seller_id && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MessageSquare className="h-5 w-5" />
+                    Messages
+                  </CardTitle>
+                  <CardDescription>
+                    Communicate with the other party
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DealChat
+                    dealId={deal.id}
+                    userId={user.id}
+                    buyerId={deal.buyer_id}
+                    sellerId={deal.seller_id}
+                    dealStatus={deal.status}
+                  />
+                </CardContent>
+              </Card>
+            )
+          }
+        </div >
+
+        {/* Timeline */}
+        < div >
+          <Card>
+            <CardHeader>
+              <CardTitle>Timeline</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <TimelineItem
+                  title="Deal Created"
+                  date={deal.created_at}
+                  completed
+                />
+                <TimelineItem
+                  title="Both Parties Joined"
+                  date={deal.buyer_id && deal.seller_id ? deal.created_at : null}
+                  completed={!!deal.buyer_id && !!deal.seller_id}
+                />
+                <TimelineItem
+                  title="Deal Commences in Chat"
+                  date={deal.buyer_id && deal.seller_id ? deal.created_at : null}
+                  completed={!!deal.buyer_id && !!deal.seller_id}
+                />
+                <TimelineItem
+                  title="Deal Finalised"
+                  date={deal.completed_at}
+                  completed={deal.status === "completed" || deal.status === "refunded"}
+                  isLast
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </div >
+      </div >
     </div >
   );
 }
