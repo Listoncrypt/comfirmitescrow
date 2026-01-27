@@ -178,24 +178,42 @@ export default function NewDealPage() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="inspectionPeriod">Inspection Period (Days)</Label>
-              <Select name="inspectionPeriod" defaultValue="3">
-                <SelectTrigger>
-                  <SelectValue placeholder="Select inspection period" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">1 Day</SelectItem>
-                  <SelectItem value="2">2 Days</SelectItem>
-                  <SelectItem value="3">3 Days</SelectItem>
-                  <SelectItem value="5">5 Days</SelectItem>
-                  <SelectItem value="7">7 Days (1 Week)</SelectItem>
-                  <SelectItem value="14">14 Days (2 Weeks)</SelectItem>
-                </SelectContent>
-              </Select>
-              <p className="text-sm text-muted-foreground">
-                The buyer has this many days to inspect the goods/services before confirming delivery.
-              </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="inspectionPeriod">Inspection Period (Days)</Label>
+                <Select name="inspectionPeriod" defaultValue="3">
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select inspection period" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">1 Day</SelectItem>
+                    <SelectItem value="2">2 Days</SelectItem>
+                    <SelectItem value="3">3 Days</SelectItem>
+                    <SelectItem value="5">5 Days</SelectItem>
+                    <SelectItem value="7">7 Days (1 Week)</SelectItem>
+                    <SelectItem value="14">14 Days (2 Weeks)</SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  Days for buyer to inspect goods.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="deliveryPeriod">Est. Delivery Time (Days)</Label>
+                <Input
+                  id="deliveryPeriod"
+                  name="deliveryPeriod"
+                  type="number"
+                  min="1"
+                  placeholder="e.g. 3"
+                  required
+                  disabled={isLoading}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Expected days for delivery.
+                </p>
+              </div>
             </div>
 
             <div className="rounded-lg bg-muted p-4">

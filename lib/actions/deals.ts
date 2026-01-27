@@ -22,6 +22,7 @@ export async function createDeal(formData: FormData) {
   const counterpartyEmail = formData.get("counterpartyEmail") as string;
   const role = formData.get("role") as "buyer" | "seller";
   const inspectionPeriod = parseInt(formData.get("inspectionPeriod") as string) || 3;
+  const deliveryPeriod = parseInt(formData.get("deliveryPeriod") as string) || null;
 
   if (!title || !description || !amount || !counterpartyEmail || !role) {
     return { error: "All fields are required" };
@@ -53,6 +54,7 @@ export async function createDeal(formData: FormData) {
       invite_code: inviteCode,
       counterparty_email: counterpartyEmail,
       inspection_period_days: inspectionPeriod,
+      delivery_period: deliveryPeriod,
     } as any)
     .select()
     .single();

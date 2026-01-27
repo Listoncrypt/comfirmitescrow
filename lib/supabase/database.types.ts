@@ -87,6 +87,8 @@ export interface Database {
           delivery_proof_url: string | null
           dispute_reason: string | null
           admin_notes: string | null
+          inspection_period_days: number
+          delivery_period: number | null
           created_at: string
           updated_at: string
         }
