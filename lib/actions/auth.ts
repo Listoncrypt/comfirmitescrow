@@ -12,11 +12,12 @@ export async function signUp(formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const fullName = formData.get("fullName") as string;
+  const phoneNumber = formData.get("phoneNumber") as string;
   const bankName = formData.get("bankName") as string;
   const accountNumber = formData.get("accountNumber") as string;
   const accountName = formData.get("accountName") as string;
 
-  if (!email || !password || !fullName || !bankName || !accountNumber || !accountName) {
+  if (!email || !password || !fullName || !phoneNumber || !bankName || !accountNumber || !accountName) {
     return { error: "All fields are required" };
   }
 
@@ -82,6 +83,7 @@ export async function signUp(formData: FormData) {
     const { error: profileError } = await supabase
       .from("profiles")
       .update({
+        phone_number: phoneNumber,
         bank_name: bankName,
         account_number: accountNumber,
         account_name: accountName,
