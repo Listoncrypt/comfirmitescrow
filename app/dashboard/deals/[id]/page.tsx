@@ -28,6 +28,7 @@ import { format } from "date-fns";
 import { DealActions } from "@/components/dashboard/deal-actions";
 import { DealChat } from "@/components/dashboard/deal-chat";
 import { PaymentInstructions } from "@/components/dashboard/payment-instructions";
+import { DealStatusListener } from "@/components/dashboard/deal-status-listener";
 
 const statusConfig = {
   draft: {
@@ -157,6 +158,7 @@ export default async function DealDetailPage({
 
   return (
     <div className="space-y-6">
+      <DealStatusListener dealId={deal.id} />
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon" asChild>
           <Link href="/dashboard/deals">

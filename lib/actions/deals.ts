@@ -131,7 +131,7 @@ export async function acceptDealInvite(dealId: string) {
   revalidatePath(`/dashboard/deals/${dealId}`);
 
   // Redirect to the deal page directly now that we use service role
-  redirect(`/dashboard/deals/${dealId}`);
+  redirect(`/dashboard/deals/${dealId}#chat`);
 }
 
 export async function fundDeal(dealId: string) {
