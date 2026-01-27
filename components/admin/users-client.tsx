@@ -165,7 +165,10 @@ export function UsersClient({ initialUsers }: { initialUsers: Profile[] }) {
                                             {format(new Date(profile.created_at), "MMM d, yyyy")}
                                         </TableCell>
                                         <TableCell className="text-right">
-                                            <AdminUserActions user={profile} />
+                                            <AdminUserActions
+                                                user={profile}
+                                                onSuccess={() => setQuery("")}
+                                            />
                                         </TableCell>
                                     </TableRow>
                                 );

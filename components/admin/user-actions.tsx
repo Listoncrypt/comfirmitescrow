@@ -26,9 +26,10 @@ import { updateUserBalance, updateUserRole, updateUserBankDetails, deleteUser } 
 
 interface AdminUserActionsProps {
   user: any;
+  onSuccess?: () => void;
 }
 
-export function AdminUserActions({ user }: AdminUserActionsProps) {
+export function AdminUserActions({ user, onSuccess }: AdminUserActionsProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [balanceOpen, setBalanceOpen] = useState(false);
   const [newBalance, setNewBalance] = useState(user.balance?.toString() || "0");
@@ -75,12 +76,16 @@ export function AdminUserActions({ user }: AdminUserActionsProps) {
     } else {
       setDeleteOpen(false);
       setAdminKey("");
-      // Force reload to prevent client-side state issues after deletion
-      window.location.reload();
-      return;
+
+      // Refresh data
+      router.refresh();
+
+      // Call success callback (to clear search, etc.)
+      if (onSuccess) {
+        onSuccess();
+      }
     }
     setIsLoading(false);
-    router.refresh();
   }
 
   async function handleToggleAdmin() {
