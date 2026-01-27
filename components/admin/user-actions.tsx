@@ -83,6 +83,8 @@ export function AdminUserActions({ user, onSuccess }: AdminUserActionsProps) {
       // Call success callback (to clear search, etc.)
       if (onSuccess) {
         onSuccess();
+        // Force fully reload page to ensure search state is cleared
+        window.location.reload();
       }
     }
     setIsLoading(false);

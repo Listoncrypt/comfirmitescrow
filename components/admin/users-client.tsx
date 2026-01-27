@@ -90,6 +90,10 @@ export function UsersClient({ initialUsers }: { initialUsers: Profile[] }) {
                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input
                         type="search"
+                        name="search_query"
+                        id="search_query"
+                        autoComplete="off"
+                        data-1p-ignore
                         placeholder="Search by email or name..."
                         className="pl-8"
                         value={query}
