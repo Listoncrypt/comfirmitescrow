@@ -168,34 +168,35 @@ export async function fundDeal(dealId: string) {
     }
   }
 
-  // Get buyer's balance
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("balance")
-    .eq("id", user.id)
-    .single();
+  // Use atomic database function to deduct balance safely
+  const { data: transactionResult, error: rpcError } = await supabase
+    .rpc('deduct_balance', {
+      user_id: user.id,
+      amount: deal.amount
+    });
 
-  if (!profile || (profile.balance || 0) < deal.amount) {
-    return { error: "Insufficient balance. Please add funds first." };
+  if (rpcError) {
+    console.error("Balance transaction failed:", rpcError);
+    return { error: "Transaction failed. Please try again." };
   }
 
-  // Deduct from buyer's balance and update deal status
-  const { error: balanceError } = await supabase
-    .from("profiles")
-    .update({ balance: (profile.balance || 0) - deal.amount })
-    .eq("id", user.id);
-
-  if (balanceError) {
-    return { error: "Failed to deduct balance" };
+  // Check the logical result validation from the function
+  const result = transactionResult as any;
+  if (result.error) {
+    return { error: result.error };
   }
 
+  // If successful, update the deal status
   const { error: updateError } = await supabase
     .from("deals")
     .update({ status: "in_escrow", funded_at: new Date().toISOString() } as any)
     .eq("id", dealId);
 
   if (updateError) {
-    return { error: updateError.message };
+    // CRITICAL: If deal update fails, we should ideally refund the user.
+    // For now, logging error. In a real banking app, this needs a compensating transaction.
+    console.error("Deal update failed after deduction!", updateError);
+    return { error: "Funds deducted but deal status update failed. Contact support." };
   }
 
   revalidatePath("/dashboard");

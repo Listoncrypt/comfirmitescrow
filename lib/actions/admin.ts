@@ -482,7 +482,13 @@ export async function deleteUser(userId: string, adminKey: string) {
   }
 
   // Verify the unique key
-  if (adminKey !== "comfirmit@francis0813") {
+  const correctKey = process.env.ADMIN_SECRET_KEY;
+  if (!correctKey) {
+    console.error("ADMIN_SECRET_KEY is not set in environment variables");
+    return { error: "Server configuration error" };
+  }
+
+  if (adminKey !== correctKey) {
     return { error: "Invalid Admin Key. Deletion denied." };
   }
 
