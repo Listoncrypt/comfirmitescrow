@@ -37,6 +37,7 @@ export function HeroSection() {
   const [currentHeadline, setCurrentHeadline] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [amount, setAmount] = useState("")
+  const [category, setCategory] = useState("")
 
   const formatAmount = (value: string) => {
     const numericValue = value.replace(/[^0-9]/g, "")
@@ -171,18 +172,6 @@ export function HeroSection() {
                       {"I'm Buying"}
                     </Label>
                   </div>
-                  <div className="flex-1">
-                    <RadioGroupItem value="brokering" id="brokering" className="peer sr-only" />
-                    <Label
-                      htmlFor="brokering"
-                      className={`flex cursor-pointer items-center justify-center rounded-lg border-2 px-4 py-3 text-sm font-medium transition-colors ${role === "brokering"
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-background text-muted-foreground hover:bg-secondary"
-                        }`}
-                    >
-                      {"I'm Brokering"}
-                    </Label>
-                  </div>
                 </RadioGroup>
               </div>
 
@@ -191,7 +180,7 @@ export function HeroSection() {
                   <Label htmlFor="category" className="mb-2 block text-sm font-medium text-foreground">
                     Select Category
                   </Label>
-                  <Select>
+                  <Select onValueChange={setCategory} value={category}>
                     <SelectTrigger id="category" className="w-full">
                       <SelectValue placeholder="Select a category" />
                     </SelectTrigger>
@@ -245,11 +234,23 @@ export function HeroSection() {
                   </div>
                 </div>
 
-                <Button className="mt-4 w-full" size="lg" asChild>
-                  <a href="/register">
-                    Start Escrowing
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
+                <Button
+                  className="mt-4 w-full"
+                  size="lg"
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      localStorage.setItem('comfirmit_pending_deal', JSON.stringify({
+                        role: role === 'selling' ? 'seller' : 'buyer',
+                        amount: amount.replace(/,/g, ''),
+                        category,
+                        requiresCourier
+                      }));
+                      window.location.href = "/register";
+                    }
+                  }}
+                >
+                  Start Escrowing
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </div>

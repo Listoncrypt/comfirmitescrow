@@ -30,7 +30,50 @@ export default function NewDealPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [role, setRole] = useState<"buyer" | "seller">("buyer");
+  const [displayAmount, setDisplayAmount] = useState("");
   const router = useRouter();
+
+  React.useEffect(() => {
+    // Check for pending deal data
+    const pendingDeal = localStorage.getItem('comfirmit_pending_deal');
+    if (pendingDeal) {
+      try {
+        const data = JSON.parse(pendingDeal);
+        if (data.role) setRole(data.role);
+        if (data.amount) {
+          // Format amount again
+          const val = data.amount.toString();
+          const formatted = val.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          setDisplayAmount(formatted);
+          // Also update hidden input manually or rely on re-render?
+          // Uncontrolled input `value` prop is initial only usually, but we are switching it to controlled below.
+        }
+
+        // We can pre-fill description with category info if available
+        const category = data.category ? `Category: ${data.category.replace('-', ' ')}` : '';
+        const courier = data.requiresCourier ? `Courier Required: ${data.requiresCourier}` : '';
+
+        if (category || courier) {
+          const desc = `${category}\n${courier}\n\n`;
+          // We need to set this to the textarea. 
+          // Since textarea is uncontrolled in the form `defaultValue` might work if we set key or change to controlled.
+          // Let's set it via DOM or state. DOM is easiest for uncontrolled.
+          setTimeout(() => {
+            const descEl = document.getElementById('description') as HTMLTextAreaElement;
+            if (descEl) descEl.value = desc;
+
+            const amountEl = document.getElementById('amount') as HTMLInputElement;
+            if (amountEl && data.amount) amountEl.value = data.amount;
+          }, 100);
+        }
+
+        // Clear storage
+        localStorage.removeItem('comfirmit_pending_deal');
+      } catch (e) {
+        console.error("Failed to parse pending deal", e);
+      }
+    }
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -142,6 +185,7 @@ export default function NewDealPage() {
                     className="pl-7"
                     required
                     disabled={isLoading}
+                    value={displayAmount}
                     onChange={(e) => {
                       // Remove non-numeric characters except decimal
                       const rawValue = e.target.value.replace(/[^0-9.]/g, '');
@@ -150,7 +194,8 @@ export default function NewDealPage() {
                       // Format integer part with commas
                       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                       // Reassemble
-                      e.target.value = parts.slice(0, 2).join('.');
+                      const formatted = parts.slice(0, 2).join('.');
+                      setDisplayAmount(formatted);
 
                       // Update hidden input
                       const hiddenInput = document.getElementById('amount') as HTMLInputElement;
@@ -159,7 +204,7 @@ export default function NewDealPage() {
                       }
                     }}
                   />
-                  <input type="hidden" id="amount" name="amount" />
+                  <input type="hidden" id="amount" name="amount" defaultValue={displayAmount.replace(/,/g, '')} />
                 </div>
               </div>
               <div className="space-y-2">

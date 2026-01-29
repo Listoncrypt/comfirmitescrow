@@ -55,7 +55,12 @@ export default function RegisterPage() {
     } else if (result?.requiresEmailConfirmation) {
       router.push("/auth/verify-email");
     } else if (result?.success) {
-      router.push("/dashboard");
+      // Check for pending deal
+      if (typeof window !== 'undefined' && localStorage.getItem('comfirmit_pending_deal')) {
+        router.push("/dashboard/deals/new");
+      } else {
+        router.push("/dashboard");
+      }
     }
   }
 
