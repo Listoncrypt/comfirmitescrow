@@ -20,6 +20,8 @@ const headlines = [
 const categories = [
   { value: "real-estate", label: "Real Estate" },
   { value: "vehicles", label: "Vehicles" },
+  { value: "phones", label: "Phones" },
+  { value: "clothes", label: "Clothes" },
   { value: "services", label: "Services" },
   { value: "construction", label: "Construction" },
   { value: "others", label: "Others" },
