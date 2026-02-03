@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -37,16 +37,30 @@ const testimonials = [
   },
 ]
 
+const AUTO_PLAY_INTERVAL = 5000 // 5 seconds
+
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
+  }, [])
 
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
+
+  // Auto-advance testimonials
+  useEffect(() => {
+    if (isPaused) return
+
+    const interval = setInterval(() => {
+      nextTestimonial()
+    }, AUTO_PLAY_INTERVAL)
+
+    return () => clearInterval(interval)
+  }, [isPaused, nextTestimonial])
 
   return (
     <section className="bg-muted/30 py-20 lg:py-28">
@@ -60,7 +74,11 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="relative mt-16">
+        <div
+          className="relative mt-16"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="mx-auto max-w-4xl overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
