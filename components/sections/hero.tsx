@@ -20,8 +20,11 @@ const headlines = [
 const categories = [
   { value: "real-estate", label: "Real Estate" },
   { value: "vehicles", label: "Vehicles" },
-  { value: "phones", label: "Phones" },
+  { value: "gadgets", label: "Gadgets" },
   { value: "clothes", label: "Clothes" },
+  { value: "hair", label: "Hair" },
+  { value: "online-subscriptions", label: "Online Subscriptions" },
+  { value: "visa-processing", label: "Visa Processing" },
   { value: "services", label: "Services" },
   { value: "construction", label: "Construction" },
   { value: "others", label: "Others" },
@@ -29,13 +32,13 @@ const categories = [
 
 const stats = [
   { value: "50K+", label: "Total Transactions", icon: ArrowRight },
-  { value: "120+", label: "Countries", icon: Globe },
+  { value: "90+", label: "Countries", icon: Globe },
   { value: "35K+", label: "Active Users", icon: Users },
 ]
 
 export function HeroSection() {
   const [role, setRole] = useState("buying")
-  const [requiresCourier, setRequiresCourier] = useState("no")
+  const [feeCharge, setFeeCharge] = useState("buyer")
   const [currentHeadline, setCurrentHeadline] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [amount, setAmount] = useState("")
@@ -198,20 +201,24 @@ export function HeroSection() {
 
                 <div>
                   <Label className="mb-2 block text-sm font-medium text-foreground">
-                    Do you require postal or courier services?
+                    Who pays the transaction fee?
                   </Label>
                   <RadioGroup
-                    defaultValue="no"
+                    defaultValue="buyer"
                     className="flex gap-4"
-                    onValueChange={setRequiresCourier}
+                    onValueChange={setFeeCharge}
                   >
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="yes" id="courier-yes" />
-                      <Label htmlFor="courier-yes" className="text-sm text-muted-foreground">Yes</Label>
+                      <RadioGroupItem value="buyer" id="fee-buyer" />
+                      <Label htmlFor="fee-buyer" className="text-sm text-muted-foreground">Buyer</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="no" id="courier-no" />
-                      <Label htmlFor="courier-no" className="text-sm text-muted-foreground">No</Label>
+                      <RadioGroupItem value="seller" id="fee-seller" />
+                      <Label htmlFor="fee-seller" className="text-sm text-muted-foreground">Seller</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="split" id="fee-split" />
+                      <Label htmlFor="fee-split" className="text-sm text-muted-foreground">50/50</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -245,7 +252,7 @@ export function HeroSection() {
                         role: role === 'selling' ? 'seller' : 'buyer',
                         amount: amount.replace(/,/g, ''),
                         category,
-                        requiresCourier
+                        feeCharge
                       }));
                       window.location.href = "/register";
                     }
