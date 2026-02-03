@@ -38,7 +38,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30">
+    <footer className="border-t border-white/10">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
@@ -50,9 +50,9 @@ export function Footer() {
                 height={40}
                 className="rounded-lg"
               />
-              <span className="text-xl font-bold text-foreground">Confirmdeal</span>
+              <span className="text-xl font-bold text-white">Confirmdeal</span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
               Secure every deal with confidence. Confirmdeal is your trusted partner for safe and transparent escrow transactions worldwide.
             </p>
             <div className="mt-6 flex gap-4">
@@ -60,7 +60,7 @@ export function Footer() {
                 <Link
                   key={social.label}
                   href={social.href}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-secondary/80 text-muted-foreground shadow-sm ring-1 ring-border/50 transition-all duration-300 hover:bg-gradient-to-br hover:from-primary hover:to-primary/80 hover:text-primary-foreground hover:shadow-md hover:shadow-primary/20 hover:ring-primary/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/70 ring-1 ring-white/20 transition-all duration-300 hover:bg-amber-500 hover:text-black hover:shadow-md hover:shadow-amber-400/20 hover:ring-amber-400/30"
                   aria-label={social.label}
                 >
                   <social.icon size={18} weight="duotone" />
@@ -70,11 +70,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-foreground">Company</h3>
+            <h3 className="mb-4 text-sm font-semibold text-white">Company</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  <Link href={link.href} className="text-sm text-white/60 transition-colors hover:text-amber-400">
                     {link.label}
                   </Link>
                 </li>
@@ -83,11 +83,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-foreground">Support</h3>
+            <h3 className="mb-4 text-sm font-semibold text-white">Support</h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  <Link href={link.href} className="text-sm text-white/60 transition-colors hover:text-amber-400">
                     {link.label}
                   </Link>
                 </li>
@@ -96,11 +96,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-foreground">Legal</h3>
+            <h3 className="mb-4 text-sm font-semibold text-white">Legal</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  <Link href={link.href} className="text-sm text-white/60 transition-colors hover:text-amber-400">
                     {link.label}
                   </Link>
                 </li>
@@ -109,11 +109,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-foreground">Services</h3>
+            <h3 className="mb-4 text-sm font-semibold text-white">Services</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                  <Link href={link.href} className="text-sm text-white/60 transition-colors hover:text-amber-400">
                     {link.label}
                   </Link>
                 </li>
@@ -122,18 +122,18 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
+          <p className="text-sm text-white/60">
             &copy; {new Date().getFullYear()} Comfirmdeal. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+            <Link href="/terms" className="text-sm text-white/60 transition-colors hover:text-amber-400">
               Terms
             </Link>
-            <Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+            <Link href="/privacy" className="text-sm text-white/60 transition-colors hover:text-amber-400">
               Privacy
             </Link>
-            <Link href="/privacy#cookies" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+            <Link href="/privacy#cookies" className="text-sm text-white/60 transition-colors hover:text-amber-400">
               Cookies
             </Link>
           </div>
