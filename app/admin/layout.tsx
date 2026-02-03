@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { AdminSidebar } from "@/components/admin/sidebar";
 import { AdminHeader } from "@/components/admin/header";
+import { InactivityLogout } from "@/components/inactivity-logout";
 
 export default async function AdminLayout({
   children,
@@ -30,6 +31,7 @@ export default async function AdminLayout({
 
   return (
     <div className="min-h-screen bg-background">
+      <InactivityLogout />
       <AdminSidebar profile={profile} />
       <div className="lg:pl-72">
         <AdminHeader profile={profile} />

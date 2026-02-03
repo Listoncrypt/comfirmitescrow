@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { DashboardHeader } from "@/components/dashboard/header";
+import { InactivityLogout } from "@/components/inactivity-logout";
 
 export default async function DashboardLayout({
   children,
@@ -64,6 +65,7 @@ export default async function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-background">
+      <InactivityLogout />
       <DashboardSidebar profile={profile} />
       <div className="lg:pl-72">
         <DashboardHeader profile={profile} />

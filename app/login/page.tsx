@@ -9,15 +9,26 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, Eye, EyeOff, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn } from "@/lib/actions/auth";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Check for account_deleted error in URL params (set by middleware when deleted account tries to access protected routes)
+  useEffect(() => {
+    const errorParam = searchParams.get("error");
+    if (errorParam === "account_deleted") {
+      setError("Account not found. Your account may have been deleted. Please contact support or create a new account.");
+      // Clean up the URL
+      router.replace("/login");
+    }
+  }, [searchParams, router]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

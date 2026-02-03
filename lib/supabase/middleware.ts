@@ -61,6 +61,24 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
+  // If user is authenticated, check if their profile still exists (account may have been deleted)
+  if (user && (isProtectedRoute || isAdminRoute)) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("id", user.id)
+      .single()
+
+    if (!profile) {
+      // Profile was deleted - sign them out and redirect to login
+      await supabase.auth.signOut({ scope: 'local' })
+      const url = request.nextUrl.clone()
+      url.pathname = "/login"
+      url.searchParams.set("error", "account_deleted")
+      return NextResponse.redirect(url)
+    }
+  }
+
   // If user is authenticated
   if (user) {
     // Check email verification status

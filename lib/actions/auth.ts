@@ -116,7 +116,7 @@ export async function signIn(formData: FormData) {
     return { error: "Email and password are required" };
   }
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email: email.trim().toLowerCase(),
     password,
   });
@@ -130,6 +130,21 @@ export async function signIn(formData: FormData) {
       return { error: "Please verify your email before signing in. Check your inbox for the confirmation link." };
     }
     return { error: error.message };
+  }
+
+  // Check if the user's profile still exists (account may have been deleted by admin)
+  if (data.user) {
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("id")
+      .eq("id", data.user.id)
+      .single();
+
+    if (profileError || !profile) {
+      // Profile was deleted - sign them out and return error
+      await supabase.auth.signOut({ scope: 'local' });
+      return { error: "Account not found. Your account may have been deleted. Please contact support or create a new account." };
+    }
   }
 
   redirect("/dashboard");
