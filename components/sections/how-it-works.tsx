@@ -32,32 +32,32 @@ export function HowItWorksSection() {
     <section id="how-it-works" className="py-20 lg:py-28">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             How Escrow Works
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Simple, secure, and straightforward. Here&apos;s how Confirmdeal protects your transactions.
           </p>
         </div>
 
         <div className="relative mt-16">
-          <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-amber-400/30 lg:block" />
+          <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-border lg:block" />
 
           <div className="grid gap-8 lg:grid-cols-4">
             {steps.map((step, index) => (
               <div key={step.title} className="relative">
                 <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 text-lg font-bold text-black shadow-lg shadow-amber-400/30 ring-2 ring-amber-400/30">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 text-lg font-bold text-primary-foreground shadow-lg shadow-primary/30 ring-2 ring-primary/30">
                     {step.step}
                   </div>
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400/20 via-amber-400/10 to-amber-500/5 text-amber-400 shadow-md shadow-amber-400/10 ring-1 ring-amber-400/20">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/5 text-primary shadow-md shadow-primary/10 ring-1 ring-primary/20">
                     <step.icon size={32} weight="duotone" />
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-white">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-white/70">{step.description}</p>
+                  <h3 className="mb-2 text-lg font-semibold text-foreground">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{step.description}</p>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className="absolute left-1/2 top-6 hidden h-0.5 w-full -translate-x-0 bg-amber-400/30 lg:block" />
+                  <div className="absolute left-1/2 top-6 hidden h-0.5 w-full -translate-x-0 bg-border lg:block" />
                 )}
               </div>
             ))}

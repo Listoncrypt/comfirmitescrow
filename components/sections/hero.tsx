@@ -68,25 +68,10 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section id="home" className="relative overflow-hidden min-h-[90vh] flex items-center py-16 lg:py-24">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 -z-20"
-        style={{
-          backgroundImage: "url('/hero-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1a3a3a]/95 via-[#1a4a4a]/80 to-transparent" />
-
-      {/* Decorative glow effects */}
+    <section id="home" className="relative overflow-hidden bg-gradient-to-br from-secondary via-background to-secondary/50 py-16 lg:py-24">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -right-40 -top-40 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-teal-400/20 blur-3xl" />
-        <div className="absolute top-1/2 left-1/4 h-64 w-64 rounded-full bg-amber-400/10 blur-2xl" />
+        <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4">
@@ -98,11 +83,11 @@ export function HeroSection() {
                   <Star key={i} size={16} weight="fill" className="text-amber-400" />
                 ))}
               </div>
-              <span className="text-sm font-medium text-white">4.8</span>
-              <span className="text-sm text-white/70">From 1500+ reviews</span>
+              <span className="text-sm font-medium text-foreground">4.8</span>
+              <span className="text-sm text-muted-foreground">From 1500+ reviews</span>
             </div>
 
-            <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
               <span className="relative block overflow-hidden">
                 <span
                   className={`inline-block transition-all duration-500 ease-out ${isAnimating
@@ -112,11 +97,11 @@ export function HeroSection() {
                 >
                   {headlines[currentHeadline].text}{" "}
                   <span className="relative inline-block">
-                    <span className="relative z-10 text-amber-400">
+                    <span className="relative z-10 text-primary">
                       {headlines[currentHeadline].highlight}
                     </span>
                     <span
-                      className={`absolute bottom-1 left-0 -z-0 h-3 bg-amber-400/30 transition-all duration-700 ease-out ${isAnimating ? "w-0" : "w-full"
+                      className={`absolute bottom-1 left-0 -z-0 h-3 bg-primary/20 transition-all duration-700 ease-out ${isAnimating ? "w-0" : "w-full"
                         }`}
                     />
                   </span>
@@ -137,15 +122,15 @@ export function HeroSection() {
                     }, 500)
                   }}
                   className={`h-1.5 rounded-full transition-all duration-300 ${index === currentHeadline
-                    ? "w-8 bg-amber-400"
-                    : "w-4 bg-white/30 hover:bg-white/50"
+                    ? "w-8 bg-primary"
+                    : "w-4 bg-primary/30 hover:bg-primary/50"
                     }`}
                   aria-label={`Go to headline ${index + 1}`}
                 />
               ))}
             </div>
 
-            <p className="mt-6 text-pretty text-lg leading-relaxed text-white/80">
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
               Confirmdeal provides a trusted escrow platform that protects both buyers and sellers.
               Experience secure transactions with transparent processes and peace of mind.
             </p>
@@ -153,15 +138,15 @@ export function HeroSection() {
             <div className="mt-8 flex flex-wrap gap-6">
               {stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col">
-                  <span className="text-2xl font-bold text-amber-400">{stat.value}</span>
-                  <span className="text-sm text-white/70">{stat.label}</span>
+                  <span className="text-2xl font-bold text-primary">{stat.value}</span>
+                  <span className="text-sm text-muted-foreground">{stat.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="w-full max-w-md justify-self-center lg:justify-self-end">
-            <div className="rounded-2xl border border-amber-400/20 bg-white/95 backdrop-blur-sm p-6 shadow-2xl shadow-black/20 ring-1 ring-white/10">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-xl">
               <div className="mb-6">
                 <RadioGroup
                   defaultValue="buying"

@@ -25,13 +25,13 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-20 lg:py-28">
+    <section id="features" className="bg-muted/30 py-20 lg:py-28">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Our Features
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Discover what makes Confirmdeal the most trusted escrow platform.
           </p>
         </div>
@@ -40,15 +40,15 @@ export function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className={`flex flex-col gap-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8 md:flex-row md:items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+              className={`flex flex-col gap-8 rounded-2xl border border-border bg-card p-8 md:flex-row md:items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
             >
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400/20 via-amber-400/10 to-amber-500/10 text-amber-400 shadow-lg shadow-amber-400/10 ring-1 ring-amber-400/20">
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/10 text-primary shadow-lg shadow-primary/10 ring-1 ring-primary/20">
                 <feature.icon size={40} weight="duotone" />
               </div>
               <div className="flex-1">
-                <h3 className="mb-3 text-xl font-semibold text-white">{feature.title}</h3>
-                <p className="leading-relaxed text-white/70">{feature.description}</p>
+                <h3 className="mb-3 text-xl font-semibold text-foreground">{feature.title}</h3>
+                <p className="leading-relaxed text-muted-foreground">{feature.description}</p>
               </div>
             </div>
           ))}

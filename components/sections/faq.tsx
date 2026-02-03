@@ -40,13 +40,13 @@ export function FAQSection() {
       <div className="container mx-auto px-4">
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="lg:col-span-1">
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
               FAQs
             </h2>
-            <p className="mt-4 text-pretty text-white/70">
+            <p className="mt-4 text-pretty text-muted-foreground">
               Get quick answers to our most commonly asked questions.
             </p>
-            <Button className="mt-6 border border-white/30 bg-transparent text-white hover:bg-white/10" variant="ghost" asChild>
+            <Button className="mt-6 bg-transparent" variant="outline" asChild>
               <Link href="#contact">Contact Support</Link>
             </Button>
           </div>
@@ -54,11 +54,11 @@ export function FAQSection() {
           <div className="lg:col-span-2">
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-white/10">
-                  <AccordionTrigger className="text-left text-base font-medium text-white hover:text-amber-400">
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left text-base font-medium">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-white/70 leading-relaxed">
+                  <AccordionContent className="text-muted-foreground leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

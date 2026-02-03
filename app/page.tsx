@@ -13,7 +13,7 @@ import { ContactSection } from "@/components/sections/contact"
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-[#1a3a3a] via-[#1a4a4a] to-[#0d2525]">
+    <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
         <HeroSection />

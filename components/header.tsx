@@ -61,7 +61,7 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-        ? "border-b border-amber-400/20 bg-[#1a3a3a]/95 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-[#1a3a3a]/80"
+        ? "border-b border-border/40 bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/60"
         : "bg-transparent"
         }`}
     >
@@ -74,7 +74,7 @@ export function Header() {
             height={40}
             className="rounded-lg"
           />
-          <span className="text-xl font-bold text-white">Confirmdeal</span>
+          <span className="text-xl font-bold text-foreground">Confirmdeal</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -84,23 +84,23 @@ export function Header() {
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
               className={`relative px-4 py-2 text-sm font-medium transition-colors ${activeSection === item.href.replace("#", "")
-                ? "text-amber-400"
-                : "text-white/70 hover:text-white"
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               {item.label}
               {activeSection === item.href.replace("#", "") && (
-                <span className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-amber-400 transition-all duration-300" />
+                <span className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-primary transition-all duration-300" />
               )}
             </a>
           ))}
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button variant="ghost" className="text-white/80 hover:text-white hover:bg-white/10" asChild>
+          <Button variant="ghost" asChild>
             <Link href="/login">Login</Link>
           </Button>
-          <Button className="bg-amber-500 hover:bg-amber-600 text-black font-semibold" asChild>
+          <Button asChild>
             <Link href="/register">Get Started</Link>
           </Button>
         </div>

@@ -43,10 +43,10 @@ ${message}`
     <section id="contact" className="py-20 lg:py-28">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Get In Touch
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Have questions? We would love to hear from you. Send us a message and we will respond as soon as possible.
           </p>
         </div>
@@ -54,7 +54,7 @@ ${message}`
         <div className="mx-auto mt-16 grid max-w-5xl gap-12 lg:grid-cols-2">
           <div className="space-y-8">
             <div>
-              <h3 className="mb-6 text-xl font-semibold text-white">Contact Information</h3>
+              <h3 className="mb-6 text-xl font-semibold text-foreground">Contact Information</h3>
               <div className="space-y-6">
                 {contactInfo.map((info) => (
                   <a
@@ -62,27 +62,27 @@ ${message}`
                     href={info.href}
                     className="group flex items-start gap-4 transition-colors"
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400/20 text-amber-400 transition-colors group-hover:bg-amber-500 group-hover:text-black">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                       <info.icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-white/60">{info.label}</p>
-                      <p className="text-white group-hover:text-amber-400">{info.value}</p>
+                      <p className="text-sm font-medium text-muted-foreground">{info.label}</p>
+                      <p className="text-foreground group-hover:text-primary">{info.value}</p>
                     </div>
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6">
-              <h4 className="mb-2 font-semibold text-white">Business Hours</h4>
-              <p className="text-sm text-white/60">
-                We're available <span className="font-semibold text-amber-400">24/7</span> to assist you with your escrow needs.
+            <div className="rounded-2xl border border-border bg-muted/30 p-6">
+              <h4 className="mb-2 font-semibold text-foreground">Business Hours</h4>
+              <p className="text-sm text-muted-foreground">
+                We're available <span className="font-semibold text-primary">24/7</span> to assist you with your escrow needs.
               </p>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-amber-400/20 bg-white/95 backdrop-blur-sm p-8">
+          <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-border bg-card p-8">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
