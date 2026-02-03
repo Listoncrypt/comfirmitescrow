@@ -145,7 +145,7 @@ export function BlogSection() {
                 Stay informed with the latest insights on secure transactions.
               </p>
             </div>
-            <Button variant="outline" className="border-white/20 bg-transparent text-white hover:bg-white/10">
+            <Button variant="ghost" className="border border-white/30 bg-transparent text-white hover:bg-white/10">
               View All
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
