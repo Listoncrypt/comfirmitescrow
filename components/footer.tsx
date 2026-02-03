@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Linkedin, Instagram, Shield } from "lucide-react"
+import { FacebookLogo, TwitterLogo, LinkedinLogo, InstagramLogo } from "@phosphor-icons/react/dist/ssr"
 
 const footerLinks = {
   company: [
@@ -30,10 +30,10 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: Facebook, href: "#facebook", label: "Facebook" },
-  { icon: Twitter, href: "#twitter", label: "Twitter" },
-  { icon: Linkedin, href: "#linkedin", label: "LinkedIn" },
-  { icon: Instagram, href: "#instagram", label: "Instagram" },
+  { icon: FacebookLogo, href: "#facebook", label: "Facebook" },
+  { icon: TwitterLogo, href: "#twitter", label: "Twitter" },
+  { icon: LinkedinLogo, href: "#linkedin", label: "LinkedIn" },
+  { icon: InstagramLogo, href: "#instagram", label: "Instagram" },
 ]
 
 export function Footer() {
@@ -63,7 +63,7 @@ export function Footer() {
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-secondary/80 text-muted-foreground shadow-sm ring-1 ring-border/50 transition-all duration-300 hover:bg-gradient-to-br hover:from-primary hover:to-primary/80 hover:text-primary-foreground hover:shadow-md hover:shadow-primary/20 hover:ring-primary/30"
                   aria-label={social.label}
                 >
-                  <social.icon className="h-4 w-4 stroke-[1.5]" />
+                  <social.icon size={18} weight="duotone" />
                 </Link>
               ))}
             </div>
@@ -139,6 +139,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }
