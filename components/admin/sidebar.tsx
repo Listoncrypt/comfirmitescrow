@@ -5,17 +5,17 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
-  LayoutDashboard,
-  Users,
+  SquaresFour,
+  UsersThree,
   FileText,
-  AlertTriangle,
+  Warning,
   Wallet,
-  Settings,
-  LogOut,
+  Gear,
+  SignOut,
   X,
-  Menu,
-  Shield,
-} from "lucide-react";
+  List,
+  ShieldCheck,
+} from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { signOut } from "@/lib/actions/auth";
@@ -24,12 +24,12 @@ import type { Database } from "@/lib/supabase/database.types";
 type Profile = Database["public"]["Tables"]["profiles"]["Row"];
 
 const navigation = [
-  { name: "Overview", href: "/admin", icon: LayoutDashboard },
-  { name: "Users", href: "/admin/users", icon: Users },
+  { name: "Overview", href: "/admin", icon: SquaresFour },
+  { name: "Users", href: "/admin/users", icon: UsersThree },
   { name: "All Deals", href: "/admin/deals", icon: FileText },
-  { name: "Disputes", href: "/admin/disputes", icon: AlertTriangle },
+  { name: "Disputes", href: "/admin/disputes", icon: Warning },
   { name: "Withdrawals", href: "/admin/withdrawals", icon: Wallet },
-  { name: "Settings", href: "/admin/settings", icon: Settings },
+  { name: "Settings", href: "/admin/settings", icon: Gear },
 ];
 
 interface AdminSidebarProps {

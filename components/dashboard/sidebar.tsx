@@ -5,15 +5,16 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
-  LayoutDashboard,
+  SquaresFour,
   FileText,
   Wallet,
-  Settings,
-  LogOut,
+  Gear,
+  SignOut,
   X,
-  Menu,
+  List,
   User,
-} from "lucide-react";
+  CreditCard,
+} from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { signOut } from "@/lib/actions/auth";
@@ -22,12 +23,12 @@ import type { Database } from "@/lib/supabase/database.types";
 type Profile = Database["public"]["Tables"]["profiles"]["Row"];
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Dashboard", href: "/dashboard", icon: SquaresFour },
   { name: "My Deals", href: "/dashboard/deals", icon: FileText },
-  { name: "Make Payment", href: "/dashboard/make-payment", icon: Wallet },
+  { name: "Make Payment", href: "/dashboard/make-payment", icon: CreditCard },
   { name: "Withdrawals", href: "/dashboard/withdrawals", icon: Wallet },
   { name: "Account Info", href: "/dashboard/profile", icon: User },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
+  { name: "Settings", href: "/dashboard/settings", icon: Gear },
 ];
 
 interface DashboardSidebarProps {
@@ -47,7 +48,7 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
         className="fixed left-4 top-4 z-50 lg:hidden"
         onClick={() => setIsMobileOpen(true)}
       >
-        <Menu className="h-6 w-6" />
+        <List size={24} weight="regular" />
       </Button>
 
       {/* Mobile overlay */}
@@ -86,7 +87,7 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
               className="lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             >
-              <X className="h-5 w-5" />
+              <X size={20} weight="regular" />
             </Button>
           </div>
 
@@ -139,7 +140,7 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
                   )}
                   onClick={() => setIsMobileOpen(false)}
                 >
-                  <item.icon className="h-5 w-5 stroke-[1.5]" />
+                  <item.icon size={20} weight="duotone" />
                   {item.name}
                 </Link>
               );
@@ -153,7 +154,7 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
                 variant="ghost"
                 className="w-full justify-start gap-3 text-muted-foreground hover:text-foreground"
               >
-                <LogOut className="h-5 w-5 stroke-[1.5]" />
+                <SignOut size={20} weight="duotone" />
                 Sign Out
               </Button>
             </form>

@@ -1,4 +1,4 @@
-import { FileText, DollarSign, Package, CheckCircle } from "lucide-react"
+import { FileText, CurrencyDollar, Package, CheckCircle } from "@phosphor-icons/react/dist/ssr"
 
 const steps = [
   {
@@ -9,7 +9,7 @@ const steps = [
   },
   {
     step: 2,
-    icon: DollarSign,
+    icon: CurrencyDollar,
     title: "Submit Payment",
     description: "The buyer deposits the agreed funds into ESCROW, securing the payment.",
   },
@@ -51,7 +51,7 @@ export function HowItWorksSection() {
                     {step.step}
                   </div>
                   <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/5 text-primary shadow-md shadow-primary/10 ring-1 ring-primary/20">
-                    <step.icon className="h-8 w-8 stroke-[1.5]" />
+                    <step.icon size={32} weight="duotone" />
                   </div>
                   <h3 className="mb-2 text-lg font-semibold text-foreground">{step.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{step.description}</p>
@@ -67,3 +67,4 @@ export function HowItWorksSection() {
     </section>
   )
 }
+

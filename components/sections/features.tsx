@@ -1,4 +1,4 @@
-import { CreditCard, Scale, Bell, Globe } from "lucide-react"
+import { CreditCard, Scales, Bell, Globe } from "@phosphor-icons/react/dist/ssr"
 
 const features = [
   {
@@ -7,7 +7,7 @@ const features = [
     description: "Our platform ensures that all transactions are processed through a robust and secure payment system. Funds are held in escrow until both parties fulfill their obligations, significantly reducing the risk of fraud or non-payment. Advanced encryption and compliance with industry standards protect sensitive financial information at every step.",
   },
   {
-    icon: Scale,
+    icon: Scales,
     title: "Easy Dispute Resolution",
     description: "We offer a streamlined dispute resolution process designed to resolve conflicts quickly and fairly. If any disagreement arises during a transaction, users can initiate a dispute within the platform. Our dedicated support team reviews the case, gathers relevant evidence, and mediates to reach an impartial outcome.",
   },
@@ -44,7 +44,7 @@ export function FeaturesSection() {
                 }`}
             >
               <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/10 text-primary shadow-lg shadow-primary/10 ring-1 ring-primary/20">
-                <feature.icon className="h-10 w-10 stroke-[1.5]" />
+                <feature.icon size={40} weight="duotone" />
               </div>
               <div className="flex-1">
                 <h3 className="mb-3 text-xl font-semibold text-foreground">{feature.title}</h3>
@@ -57,3 +57,4 @@ export function FeaturesSection() {
     </section>
   )
 }
+

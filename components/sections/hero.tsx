@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
-import { Star, Users, Globe, ArrowRight } from "lucide-react"
+import { Star, UsersThree, GlobeHemisphereWest, ArrowRight } from "@phosphor-icons/react"
 import { useState, useEffect } from "react"
 
 const headlines = [
@@ -32,8 +32,8 @@ const categories = [
 
 const stats = [
   { value: "50K+", label: "Total Transactions", icon: ArrowRight },
-  { value: "90+", label: "Countries", icon: Globe },
-  { value: "35K+", label: "Active Users", icon: Users },
+  { value: "90+", label: "Countries", icon: GlobeHemisphereWest },
+  { value: "35K+", label: "Active Users", icon: UsersThree },
 ]
 
 export function HeroSection() {
@@ -80,7 +80,7 @@ export function HeroSection() {
             <div className="mb-6 flex items-center gap-2">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  <Star key={i} size={16} weight="fill" className="text-amber-400" />
                 ))}
               </div>
               <span className="text-sm font-medium text-foreground">4.8</span>

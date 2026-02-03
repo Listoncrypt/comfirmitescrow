@@ -1,4 +1,4 @@
-import { Lock, Fingerprint, ShieldAlert } from "lucide-react"
+import { Lock, Fingerprint, ShieldWarning } from "@phosphor-icons/react/dist/ssr"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
@@ -15,7 +15,7 @@ const securityFeatures = [
     description: "Enhance your account security with two-factor authentication, adding an extra layer of protection to your login process.",
   },
   {
-    icon: ShieldAlert,
+    icon: ShieldWarning,
     title: "Fraud Detection",
     description: "Advanced fraud detection algorithms monitor transactions in real-time, identifying and preventing suspicious activities.",
   },
@@ -38,7 +38,7 @@ export function SecuritySection() {
               {securityFeatures.map((feature) => (
                 <div key={feature.title} className="flex gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/10 text-primary shadow-md shadow-primary/10 ring-1 ring-primary/20">
-                    <feature.icon className="h-6 w-6 stroke-[1.5]" />
+                    <feature.icon size={24} weight="duotone" />
                   </div>
                   <div>
                     <h3 className="mb-1 font-semibold text-foreground">{feature.title}</h3>
@@ -71,3 +71,4 @@ export function SecuritySection() {
     </section>
   )
 }
+
