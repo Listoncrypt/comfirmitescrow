@@ -46,7 +46,7 @@ export function FAQSection() {
             <p className="mt-4 text-pretty text-white/70">
               Get quick answers to our most commonly asked questions.
             </p>
-            <Button className="mt-6 border-white/20 text-white hover:bg-white/10" variant="outline" asChild>
+            <Button className="mt-6 border-white/20 bg-transparent text-white hover:bg-white/10" variant="outline" asChild>
               <Link href="#contact">Contact Support</Link>
             </Button>
           </div>

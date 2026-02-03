@@ -105,7 +105,7 @@ export function TestimonialsSection() {
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-4">
-            <Button variant="outline" size="icon" className="border-white/20 text-white hover:bg-white/10" onClick={prevTestimonial} aria-label="Previous testimonial">
+            <Button variant="outline" size="icon" className="border-white/20 bg-transparent text-white hover:bg-white/10" onClick={prevTestimonial} aria-label="Previous testimonial">
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <div className="flex gap-2">
@@ -119,7 +119,7 @@ export function TestimonialsSection() {
                 />
               ))}
             </div>
-            <Button variant="outline" size="icon" className="border-white/20 text-white hover:bg-white/10" onClick={nextTestimonial} aria-label="Next testimonial">
+            <Button variant="outline" size="icon" className="border-white/20 bg-transparent text-white hover:bg-white/10" onClick={nextTestimonial} aria-label="Next testimonial">
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
