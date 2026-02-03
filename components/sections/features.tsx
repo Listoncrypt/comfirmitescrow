@@ -43,8 +43,8 @@ export function FeaturesSection() {
               className={`flex flex-col gap-8 rounded-2xl border border-border bg-card p-8 md:flex-row md:items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
             >
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                <feature.icon className="h-10 w-10" />
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/10 text-primary shadow-lg shadow-primary/10 ring-1 ring-primary/20">
+                <feature.icon className="h-10 w-10 stroke-[1.5]" />
               </div>
               <div className="flex-1">
                 <h3 className="mb-3 text-xl font-semibold text-foreground">{feature.title}</h3>

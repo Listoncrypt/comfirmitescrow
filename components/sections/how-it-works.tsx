@@ -47,11 +47,11 @@ export function HowItWorksSection() {
             {steps.map((step, index) => (
               <div key={step.title} className="relative">
                 <div className="relative z-10 flex flex-col items-center text-center">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 text-lg font-bold text-primary-foreground shadow-lg shadow-primary/30 ring-2 ring-primary/30">
                     {step.step}
                   </div>
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                    <step.icon className="h-8 w-8" />
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/5 text-primary shadow-md shadow-primary/10 ring-1 ring-primary/20">
+                    <step.icon className="h-8 w-8 stroke-[1.5]" />
                   </div>
                   <h3 className="mb-2 text-lg font-semibold text-foreground">{step.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{step.description}</p>

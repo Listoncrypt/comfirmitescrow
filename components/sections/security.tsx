@@ -37,8 +37,8 @@ export function SecuritySection() {
             <div className="mt-10 space-y-6">
               {securityFeatures.map((feature) => (
                 <div key={feature.title} className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <feature.icon className="h-6 w-6" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/10 text-primary shadow-md shadow-primary/10 ring-1 ring-primary/20">
+                    <feature.icon className="h-6 w-6 stroke-[1.5]" />
                   </div>
                   <div>
                     <h3 className="mb-1 font-semibold text-foreground">{feature.title}</h3>

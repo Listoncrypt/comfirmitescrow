@@ -44,8 +44,8 @@ export function BenefitsSection() {
               key={benefit.title}
               className="group relative rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <benefit.icon className="h-6 w-6" />
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent text-primary shadow-md shadow-primary/10 ring-1 ring-primary/10 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:via-primary group-hover:to-primary/80 group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/30 group-hover:ring-primary/50">
+                <benefit.icon className="h-7 w-7 stroke-[1.5]" />
               </div>
               <h3 className="mb-2 text-lg font-semibold text-foreground">{benefit.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{benefit.description}</p>

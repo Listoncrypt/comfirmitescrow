@@ -139,7 +139,7 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
                   )}
                   onClick={() => setIsMobileOpen(false)}
                 >
-                  <item.icon className="h-5 w-5" />
+                  <item.icon className="h-5 w-5 stroke-[1.5]" />
                   {item.name}
                 </Link>
               );
@@ -153,7 +153,7 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
                 variant="ghost"
                 className="w-full justify-start gap-3 text-muted-foreground hover:text-foreground"
               >
-                <LogOut className="h-5 w-5" />
+                <LogOut className="h-5 w-5 stroke-[1.5]" />
                 Sign Out
               </Button>
             </form>

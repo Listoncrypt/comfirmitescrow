@@ -60,10 +60,10 @@ export function Footer() {
                 <Link
                   key={social.label}
                   href={social.href}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-secondary/80 text-muted-foreground shadow-sm ring-1 ring-border/50 transition-all duration-300 hover:bg-gradient-to-br hover:from-primary hover:to-primary/80 hover:text-primary-foreground hover:shadow-md hover:shadow-primary/20 hover:ring-primary/30"
                   aria-label={social.label}
                 >
-                  <social.icon className="h-4 w-4" />
+                  <social.icon className="h-4 w-4 stroke-[1.5]" />
                 </Link>
               ))}
             </div>
