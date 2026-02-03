@@ -3,12 +3,14 @@
 import { Button } from "@/components/ui/button"
 import { Calendar, ArrowRight, X } from "lucide-react"
 import { useState } from "react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const blogPosts = [
   {
     id: 1,
     title: "What if there is a disagreement during the transaction? What is dispute resolution?",
-    excerpt: "The landscape of escrow services has evolved significantly, with dispute resolution becoming a crucial component of secure transactions...",
+    excerpt:
+      "The landscape of escrow services has evolved significantly, with dispute resolution becoming a crucial component of secure transactions...",
     fullContent: `The landscape of escrow services has evolved significantly, with dispute resolution becoming a crucial component of secure transactions.
 
 When a dispute arises during an escrow transaction, our platform provides a structured resolution process that ensures fairness for all parties involved.
@@ -37,17 +39,9 @@ Our dispute resolution system has successfully resolved over 98% of cases, ensur
   {
     id: 2,
     title: "Payment Processing: Mass positive reports are empowering this web portal safe and secure",
-    excerpt: "Security is at the heart of every transaction on our platform. Learn how our payment processing system keeps your funds safe...",
+    excerpt:
+      "Security is at the heart of every transaction on our platform. Learn how our payment processing system keeps your funds safe...",
     fullContent: `Security is at the heart of every transaction on our platform. Learn how our payment processing system keeps your funds safe and why users trust Confirmdeal for their most important transactions.
-
-**Our Multi-Layer Security Approach:**
-
-At Confirmdeal, we employ a comprehensive security infrastructure that protects your funds at every stage of the transaction.
-
-// ... (abbreviated for tool, doing targeted replace if possible or full block)
-// Actually I should do targeted replacements to avoid large blocks if possible.
-// But AllowMultiple is true.
-
 
 **Our Multi-Layer Security Approach:**
 
@@ -78,7 +72,8 @@ Trust Confirmdeal for your secure payment processing needs.`,
   {
     id: 3,
     title: "What is an Escrow Agreement?",
-    excerpt: "An escrow agreement is a legally binding contract that outlines the terms and conditions under which funds or assets are held...",
+    excerpt:
+      "An escrow agreement is a legally binding contract that outlines the terms and conditions under which funds or assets are held...",
     fullContent: `An escrow agreement is a legally binding contract that outlines the terms and conditions under which funds or assets are held by a neutral third party during a transaction.
 
 **Understanding Escrow Agreements:**
@@ -119,6 +114,7 @@ Start your secure transaction today with Confirmdeal.`,
 
 export function BlogSection() {
   const [expandedPost, setExpandedPost] = useState<number | null>(null)
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>()
 
   const handleReadMore = (postId: number) => {
     setExpandedPost(postId)
@@ -134,28 +130,41 @@ export function BlogSection() {
 
   return (
     <>
-      <section id="blog" className="bg-muted/30 py-20 lg:py-28">
+      <section id="blog" ref={ref} className="relative py-20 lg:py-28">
+        {/* Background */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-muted/30 via-muted/50 to-muted/30" />
+
         <div className="container mx-auto px-4">
-          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div
+            className={`flex flex-col items-start justify-between gap-4 md:flex-row md:items-center transition-all duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
             <div>
+              <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                Latest Updates
+              </span>
               <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-                Our Blog
+                From Our Blog
               </h2>
               <p className="mt-2 text-muted-foreground">
                 Stay informed with the latest insights on secure transactions.
               </p>
             </div>
-            <Button variant="outline">
+            <Button variant="outline" className="border-border/50 bg-card/60 backdrop-blur-sm">
               View All
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.map((post) => (
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {blogPosts.map((post, index) => (
               <article
                 key={post.id}
-                className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1"
+                className={`group overflow-hidden rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 100 + 200}ms` }}
               >
                 <div className="aspect-video bg-gradient-to-br from-primary/20 via-accent/10 to-secondary" />
                 <div className="p-6">
@@ -171,9 +180,7 @@ export function BlogSection() {
                   <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                     {post.title}
                   </h3>
-                  <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">
-                    {post.excerpt}
-                  </p>
+                  <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
                   <button
                     onClick={() => handleReadMore(post.id)}
                     className="mt-4 inline-flex items-center text-sm font-medium text-primary transition-all hover:gap-2"
@@ -194,10 +201,10 @@ export function BlogSection() {
           onClick={handleClose}
         >
           <div
-            className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl bg-card shadow-2xl animate-in fade-in zoom-in-95 duration-300"
+            className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-3xl border border-border/50 bg-card shadow-2xl animate-in fade-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-card px-6 py-4">
+            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border/50 bg-card px-6 py-4">
               <div className="flex items-center gap-3">
                 <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                   {selectedPost.category}
@@ -217,9 +224,7 @@ export function BlogSection() {
                 <Calendar className="h-4 w-4" />
                 {selectedPost.date}
               </div>
-              <h2 className="mb-6 text-2xl font-bold text-foreground md:text-3xl">
-                {selectedPost.title}
-              </h2>
+              <h2 className="mb-6 text-2xl font-bold text-foreground md:text-3xl">{selectedPost.title}</h2>
               <div className="prose prose-sm max-w-none text-muted-foreground">
                 {selectedPost.fullContent.split("\n\n").map((paragraph, index) => {
                   if (paragraph.startsWith("**") && paragraph.endsWith("**")) {
