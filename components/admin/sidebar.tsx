@@ -49,7 +49,7 @@ export function AdminSidebar({ profile }: AdminSidebarProps) {
         className="fixed left-4 top-4 z-50 lg:hidden"
         onClick={() => setIsMobileOpen(true)}
       >
-        <Menu className="h-6 w-6" />
+        <List size={24} weight="regular" />
       </Button>
 
       {/* Mobile overlay */}
@@ -93,7 +93,7 @@ export function AdminSidebar({ profile }: AdminSidebarProps) {
               className="lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             >
-              <X className="h-5 w-5" />
+              <X size={20} weight="regular" />
             </Button>
           </div>
 
@@ -101,7 +101,7 @@ export function AdminSidebar({ profile }: AdminSidebarProps) {
           <div className="px-6 py-4 border-b">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
-                <Shield className="h-5 w-5 text-primary-foreground" />
+                <ShieldCheck size={20} weight="duotone" className="text-primary-foreground" />
               </div>
               <div>
                 <p className="text-sm font-medium text-foreground">
@@ -130,7 +130,7 @@ export function AdminSidebar({ profile }: AdminSidebarProps) {
                   )}
                   onClick={() => setIsMobileOpen(false)}
                 >
-                  <item.icon className="h-5 w-5 stroke-[1.5]" />
+                  <item.icon size={20} weight="duotone" />
                   {item.name}
                 </Link>
               );
@@ -144,7 +144,7 @@ export function AdminSidebar({ profile }: AdminSidebarProps) {
                 variant="ghost"
                 className="w-full justify-start gap-3 text-muted-foreground hover:text-foreground"
               >
-                <LogOut className="h-5 w-5 stroke-[1.5]" />
+                <SignOut size={20} weight="duotone" />
                 Sign Out
               </Button>
             </form>
