@@ -53,10 +53,10 @@ export function FeaturesSection() {
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Platform Features
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Everything You Need for Secure Transactions
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Discover what makes Confirmdeal the most trusted escrow platform in Nigeria.
           </p>
         </div>
@@ -76,12 +76,12 @@ export function FeaturesSection() {
               </div>
               <div className="flex-1">
                 <div className="mb-2 flex flex-wrap items-center gap-3">
-                  <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold text-foreground">{feature.title}</h3>
                   <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
                     {feature.highlight}
                   </span>
                 </div>
-                <p className="leading-relaxed text-white/70">{feature.description}</p>
+                <p className="leading-relaxed text-muted-foreground">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -90,3 +90,4 @@ export function FeaturesSection() {
     </section>
   )
 }
+

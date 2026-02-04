@@ -86,13 +86,13 @@ export function HeroSection() {
                   <Star key={i} size={16} weight="fill" className="text-amber-400" />
                 ))}
               </div>
-              <span className="text-sm font-medium text-white">4.8</span>
+              <span className="text-sm font-medium text-foreground">4.8</span>
               <span className="h-4 w-px bg-border" />
-              <span className="text-sm text-white/70">From 1,500+ reviews</span>
+              <span className="text-sm text-muted-foreground">From 1,500+ reviews</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
               <span className="relative block overflow-hidden">
                 <span
                   className={`inline-block transition-all duration-500 ease-out ${isAnimating ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"
@@ -125,8 +125,8 @@ export function HeroSection() {
                     }, 500)
                   }}
                   className={`h-1.5 rounded-full transition-all duration-300 ${index === currentHeadline
-                      ? "w-10 bg-gradient-to-r from-primary to-accent"
-                      : "w-4 bg-primary/20 hover:bg-primary/40"
+                    ? "w-10 bg-gradient-to-r from-primary to-accent"
+                    : "w-4 bg-primary/20 hover:bg-primary/40"
                     }`}
                   aria-label={`Go to headline ${index + 1}`}
                 />
@@ -134,7 +134,7 @@ export function HeroSection() {
             </div>
 
             {/* Description */}
-            <p className="mt-8 text-pretty text-lg leading-relaxed text-white/80">
+            <p className="mt-8 text-pretty text-lg leading-relaxed text-muted-foreground">
               Confirmdeal provides a trusted escrow platform that protects both buyers and sellers.
               Experience secure transactions with transparent processes and complete peace of mind.
             </p>
@@ -173,8 +173,8 @@ export function HeroSection() {
                     <Label
                       htmlFor="selling"
                       className={`flex cursor-pointer items-center justify-center rounded-xl border-2 px-4 py-3.5 text-sm font-medium transition-all ${role === "selling"
-                          ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
-                          : "border-border bg-background/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
+                        ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                        : "border-border bg-background/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
                         }`}
                     >
                       {"I'm Selling"}
@@ -185,8 +185,8 @@ export function HeroSection() {
                     <Label
                       htmlFor="buying"
                       className={`flex cursor-pointer items-center justify-center rounded-xl border-2 px-4 py-3.5 text-sm font-medium transition-all ${role === "buying"
-                          ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
-                          : "border-border bg-background/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
+                        ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                        : "border-border bg-background/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
                         }`}
                     >
                       {"I'm Buying"}
@@ -287,3 +287,4 @@ export function HeroSection() {
     </section>
   )
 }
+

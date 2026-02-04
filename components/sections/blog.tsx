@@ -143,10 +143,10 @@ export function BlogSection() {
               <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
                 Latest Updates
               </span>
-              <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+              <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
                 From Our Blog
               </h2>
-              <p className="mt-2 text-white/70">
+              <p className="mt-2 text-muted-foreground">
                 Stay informed with the latest insights on secure transactions.
               </p>
             </div>
@@ -170,15 +170,15 @@ export function BlogSection() {
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                       {post.category}
                     </span>
-                    <span className="flex items-center gap-1 text-xs text-white/60">
+                    <span className="flex items-center gap-1 text-xs text-muted-foreground">
                       <Calendar className="h-3 w-3" />
                       {post.date}
                     </span>
                   </div>
-                  <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-white transition-colors group-hover:text-primary">
+                  <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
                     {post.title}
                   </h3>
-                  <p className="line-clamp-3 text-sm leading-relaxed text-white/70">{post.excerpt}</p>
+                  <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
                   <button
                     onClick={() => handleReadMore(post.id)}
                     className="mt-4 inline-flex items-center text-sm font-medium text-primary transition-all hover:gap-2"
@@ -268,3 +268,4 @@ export function BlogSection() {
     </>
   )
 }
+

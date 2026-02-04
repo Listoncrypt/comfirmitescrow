@@ -61,8 +61,8 @@ ${message}`
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Contact Us
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">Get In Touch</h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">Get In Touch</h2>
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Have questions? We would love to hear from you. Send us a message and we will respond as soon as possible.
           </p>
         </div>
@@ -73,7 +73,7 @@ ${message}`
               }`}
           >
             <div>
-              <h3 className="mb-6 text-xl font-semibold text-white">Contact Information</h3>
+              <h3 className="mb-6 text-xl font-semibold text-foreground">Contact Information</h3>
               <div className="space-y-4">
                 {contactInfo.map((info) => {
                   const Wrapper = info.href ? "a" : "div"
@@ -88,8 +88,8 @@ ${message}`
                         <info.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white/60">{info.label}</p>
-                        <p className="text-white group-hover:text-primary">{info.value}</p>
+                        <p className="text-sm font-medium text-muted-foreground">{info.label}</p>
+                        <p className="text-foreground group-hover:text-primary">{info.value}</p>
                       </div>
                     </Wrapper>
                   )
@@ -98,8 +98,8 @@ ${message}`
             </div>
 
             <div className="rounded-2xl border border-border/50 bg-gradient-to-br from-primary/10 via-accent/5 to-transparent p-6 backdrop-blur-sm">
-              <h4 className="mb-2 font-semibold text-white">Business Hours</h4>
-              <p className="text-sm text-white/70">
+              <h4 className="mb-2 font-semibold text-foreground">Business Hours</h4>
+              <p className="text-sm text-muted-foreground">
                 We're available <span className="font-semibold text-primary">24/7</span> to assist you with your escrow
                 needs. Our support team typically responds within 24 hours.
               </p>
@@ -164,7 +164,7 @@ ${message}`
               Send Message
               <Send className="ml-2 h-4 w-4" />
             </Button>
-            <p className="text-center text-xs text-white/60">
+            <p className="text-center text-xs text-muted-foreground">
               This will open your email client to send a message to our support team
             </p>
           </form>
@@ -173,3 +173,4 @@ ${message}`
     </section>
   )
 }
+

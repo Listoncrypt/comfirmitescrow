@@ -49,10 +49,10 @@ export function HowItWorksSection() {
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Simple Process
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             How Escrow Works
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Simple, secure, and straightforward. Here&apos;s how Confirmdeal protects your transactions.
           </p>
         </div>
@@ -88,8 +88,8 @@ export function HowItWorksSection() {
                     <step.icon size={28} weight="duotone" />
                   </div>
 
-                  <h3 className="mb-2 text-lg font-semibold text-white">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-white/70">{step.description}</p>
+                  <h3 className="mb-2 text-lg font-semibold text-foreground">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -99,3 +99,4 @@ export function HowItWorksSection() {
     </section>
   )
 }
+

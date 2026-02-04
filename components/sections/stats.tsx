@@ -80,10 +80,10 @@ export function StatsSection() {
           className={`mx-auto max-w-3xl text-center transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
         >
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Trusted by Thousands Across Nigeria
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Join the growing community of buyers and sellers who trust Confirmdeal for secure transactions.
           </p>
         </div>
@@ -99,7 +99,7 @@ export function StatsSection() {
               {/* Gradient overlay on hover */}
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 transition-all duration-500 group-hover:from-primary/5 group-hover:via-primary/3 group-hover:to-transparent" />
 
-              <div className="text-4xl font-bold text-white lg:text-5xl">
+              <div className="text-4xl font-bold text-foreground lg:text-5xl">
                 <AnimatedCounter
                   value={stat.value}
                   suffix={stat.suffix}
@@ -107,7 +107,7 @@ export function StatsSection() {
                   isVisible={isVisible}
                 />
               </div>
-              <p className="mt-2 text-sm font-medium text-white/60">{stat.label}</p>
+              <p className="mt-2 text-sm font-medium text-muted-foreground">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -115,3 +115,4 @@ export function StatsSection() {
     </section>
   )
 }
+

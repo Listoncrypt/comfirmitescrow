@@ -89,10 +89,10 @@ export function TestimonialsSection() {
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Testimonials
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Trusted by Thousands
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             See what our customers have to say about their experience with Confirmdeal.
           </p>
         </div>
@@ -123,7 +123,7 @@ export function TestimonialsSection() {
                       ))}
                     </div>
 
-                    <blockquote className="mb-8 text-lg leading-relaxed text-white/80 md:text-xl">
+                    <blockquote className="mb-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
                       &ldquo;{testimonial.quote}&rdquo;
                     </blockquote>
 
@@ -131,8 +131,8 @@ export function TestimonialsSection() {
                       <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-xl font-bold text-primary-foreground shadow-lg shadow-primary/25">
                         {testimonial.avatar}
                       </div>
-                      <h4 className="font-semibold text-white">{testimonial.name}</h4>
-                      <p className="text-sm text-white/60">{testimonial.role}</p>
+                      <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
@@ -177,3 +177,4 @@ export function TestimonialsSection() {
     </section>
   )
 }
+

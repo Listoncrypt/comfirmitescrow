@@ -32,7 +32,7 @@ export function TrustBadgesSection() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <badge.icon size={20} weight="duotone" />
               </div>
-              <span className="text-sm font-medium text-white/70">{badge.label}</span>
+              <span className="text-sm font-medium text-muted-foreground">{badge.label}</span>
             </div>
           ))}
         </div>
@@ -40,3 +40,4 @@ export function TrustBadgesSection() {
     </section>
   )
 }
+

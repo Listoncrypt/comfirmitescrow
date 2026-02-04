@@ -41,10 +41,10 @@ export function BenefitsSection() {
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Why Choose Us
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             Benefits of Confirmdeal
           </h2>
-          <p className="mt-4 text-pretty text-lg text-white/70">
+          <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Experience secure and hassle-free transactions with our trusted escrow platform.
           </p>
         </div>
@@ -63,8 +63,8 @@ export function BenefitsSection() {
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent text-primary shadow-md shadow-primary/10 ring-1 ring-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:via-primary group-hover:to-primary/80 group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/30 group-hover:ring-primary/50">
                 <benefit.icon size={28} weight="duotone" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-white">{benefit.title}</h3>
-              <p className="text-sm leading-relaxed text-white/70">{benefit.description}</p>
+              <h3 className="mb-2 text-lg font-semibold text-foreground">{benefit.title}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
         </div>
@@ -81,3 +81,4 @@ export function BenefitsSection() {
     </section>
   )
 }
+

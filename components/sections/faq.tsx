@@ -57,10 +57,10 @@ export function FAQSection() {
             <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               Support
             </span>
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
               Frequently Asked Questions
             </h2>
-            <p className="mt-4 text-pretty text-white/70">
+            <p className="mt-4 text-pretty text-muted-foreground">
               Get quick answers to our most commonly asked questions about escrow services.
             </p>
             <Button className="mt-6 shadow-lg shadow-primary/25" variant="outline" asChild>
@@ -82,7 +82,7 @@ export function FAQSection() {
                   <AccordionTrigger className="py-5 text-left text-base font-medium hover:no-underline [&[data-state=open]]:text-primary">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 leading-relaxed text-white/70">
+                  <AccordionContent className="pb-5 leading-relaxed text-muted-foreground">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -94,3 +94,4 @@ export function FAQSection() {
     </section>
   )
 }
+
