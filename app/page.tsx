@@ -22,10 +22,10 @@ export default function Home() {
       {/* Background image with overlay */}
       <div className="fixed inset-0 -z-10">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+          style={{ backgroundImage: "url('/images/teal-coins-bg.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-950/70 via-teal-900/40 to-teal-950/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-950/80 via-teal-900/50 to-teal-950/80" />
       </div>
 
       <Header />
