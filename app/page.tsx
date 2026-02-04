@@ -16,17 +16,20 @@ import { TrustBadgesSection } from "@/components/sections/trust-badges"
 export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col">
-      {/* Fixed background image with overlay */}
+      {/* Base gradient background */}
+      <div className="fixed inset-0 -z-20 bg-gradient-to-br from-teal-950 via-teal-900 to-teal-800" />
+
+      {/* Background image with overlay */}
       <div className="fixed inset-0 -z-10">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-950/70 via-teal-900/40 to-teal-950/70" />
       </div>
-      
+
       <Header />
-      <main className="flex-1">
+      <main className="relative z-0 flex-1">
         <HeroSection />
         <TrustBadgesSection />
         <BenefitsSection />
