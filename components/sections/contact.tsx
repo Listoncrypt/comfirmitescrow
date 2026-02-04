@@ -55,27 +55,25 @@ ${message}`
     <section id="contact" ref={ref} className="relative py-20 lg:py-28">
       <div className="container mx-auto px-4">
         <div
-          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Contact Us
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">Get In Touch</h2>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">Get In Touch</h2>
+          <p className="mt-4 text-pretty text-lg text-white/70">
             Have questions? We would love to hear from you. Send us a message and we will respond as soon as possible.
           </p>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-5xl gap-12 lg:grid-cols-2">
           <div
-            className={`space-y-8 transition-all delay-200 duration-700 ${
-              isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-            }`}
+            className={`space-y-8 transition-all delay-200 duration-700 ${isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+              }`}
           >
             <div>
-              <h3 className="mb-6 text-xl font-semibold text-foreground">Contact Information</h3>
+              <h3 className="mb-6 text-xl font-semibold text-white">Contact Information</h3>
               <div className="space-y-4">
                 {contactInfo.map((info) => {
                   const Wrapper = info.href ? "a" : "div"
@@ -90,8 +88,8 @@ ${message}`
                         <info.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">{info.label}</p>
-                        <p className="text-foreground group-hover:text-primary">{info.value}</p>
+                        <p className="text-sm font-medium text-white/60">{info.label}</p>
+                        <p className="text-white group-hover:text-primary">{info.value}</p>
                       </div>
                     </Wrapper>
                   )
@@ -100,8 +98,8 @@ ${message}`
             </div>
 
             <div className="rounded-2xl border border-border/50 bg-gradient-to-br from-primary/10 via-accent/5 to-transparent p-6 backdrop-blur-sm">
-              <h4 className="mb-2 font-semibold text-foreground">Business Hours</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="mb-2 font-semibold text-white">Business Hours</h4>
+              <p className="text-sm text-white/70">
                 We're available <span className="font-semibold text-primary">24/7</span> to assist you with your escrow
                 needs. Our support team typically responds within 24 hours.
               </p>
@@ -110,9 +108,8 @@ ${message}`
 
           <form
             onSubmit={handleSubmit}
-            className={`space-y-6 rounded-2xl border border-border/50 bg-card/80 p-8 shadow-xl backdrop-blur-sm transition-all delay-300 duration-700 ${
-              isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
-            }`}
+            className={`space-y-6 rounded-2xl border border-border/50 bg-card/80 p-8 shadow-xl backdrop-blur-sm transition-all delay-300 duration-700 ${isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+              }`}
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
@@ -167,7 +164,7 @@ ${message}`
               Send Message
               <Send className="ml-2 h-4 w-4" />
             </Button>
-            <p className="text-center text-xs text-muted-foreground">
+            <p className="text-center text-xs text-white/60">
               This will open your email client to send a message to our support team
             </p>
           </form>

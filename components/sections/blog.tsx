@@ -136,18 +136,17 @@ export function BlogSection() {
 
         <div className="container mx-auto px-4">
           <div
-            className={`flex flex-col items-start justify-between gap-4 md:flex-row md:items-center transition-all duration-700 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
+            className={`flex flex-col items-start justify-between gap-4 md:flex-row md:items-center transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
           >
             <div>
               <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
                 Latest Updates
               </span>
-              <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+              <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
                 From Our Blog
               </h2>
-              <p className="mt-2 text-muted-foreground">
+              <p className="mt-2 text-white/70">
                 Stay informed with the latest insights on secure transactions.
               </p>
             </div>
@@ -161,9 +160,8 @@ export function BlogSection() {
             {blogPosts.map((post, index) => (
               <article
                 key={post.id}
-                className={`group overflow-hidden rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
+                className={`group overflow-hidden rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  }`}
                 style={{ transitionDelay: `${index * 100 + 200}ms` }}
               >
                 <div className="aspect-video bg-gradient-to-br from-primary/20 via-accent/10 to-secondary" />
@@ -172,15 +170,15 @@ export function BlogSection() {
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                       {post.category}
                     </span>
-                    <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-1 text-xs text-white/60">
                       <Calendar className="h-3 w-3" />
                       {post.date}
                     </span>
                   </div>
-                  <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                  <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-white transition-colors group-hover:text-primary">
                     {post.title}
                   </h3>
-                  <p className="line-clamp-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
+                  <p className="line-clamp-3 text-sm leading-relaxed text-white/70">{post.excerpt}</p>
                   <button
                     onClick={() => handleReadMore(post.id)}
                     className="mt-4 inline-flex items-center text-sm font-medium text-primary transition-all hover:gap-2"

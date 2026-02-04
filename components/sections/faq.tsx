@@ -51,17 +51,16 @@ export function FAQSection() {
       <div className="container mx-auto px-4">
         <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
           <div
-            className={`lg:col-span-1 transition-all duration-700 ${
-              isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-            }`}
+            className={`lg:col-span-1 transition-all duration-700 ${isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+              }`}
           >
             <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               Support
             </span>
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
               Frequently Asked Questions
             </h2>
-            <p className="mt-4 text-pretty text-muted-foreground">
+            <p className="mt-4 text-pretty text-white/70">
               Get quick answers to our most commonly asked questions about escrow services.
             </p>
             <Button className="mt-6 shadow-lg shadow-primary/25" variant="outline" asChild>
@@ -70,9 +69,8 @@ export function FAQSection() {
           </div>
 
           <div
-            className={`lg:col-span-2 transition-all delay-200 duration-700 ${
-              isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
-            }`}
+            className={`lg:col-span-2 transition-all delay-200 duration-700 ${isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+              }`}
           >
             <Accordion type="single" collapsible className="w-full space-y-4">
               {faqs.map((faq, index) => (
@@ -84,7 +82,7 @@ export function FAQSection() {
                   <AccordionTrigger className="py-5 text-left text-base font-medium hover:no-underline [&[data-state=open]]:text-primary">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 leading-relaxed text-muted-foreground">
+                  <AccordionContent className="pb-5 leading-relaxed text-white/70">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

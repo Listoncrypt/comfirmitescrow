@@ -59,16 +59,15 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
           ? "border-b border-border/40 bg-background/80 shadow-sm backdrop-blur-xl supports-[backdrop-filter]:bg-background/60"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:h-20">
         <Link href="/" className="flex items-center gap-2.5">
           <Image src="/logo.png" alt="Confirmdeal Logo" width={40} height={40} className="rounded-xl shadow-md" />
-          <span className="text-xl font-bold text-foreground">Confirmdeal</span>
+          <span className="text-xl font-bold text-white">Confirmdeal</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -77,11 +76,10 @@ export function Header() {
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                activeSection === item.href.replace("#", "")
+              className={`relative px-4 py-2 text-sm font-medium transition-colors ${activeSection === item.href.replace("#", "")
                   ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+                  : "text-white/70 hover:text-white"
+                }`}
             >
               {item.label}
               {activeSection === item.href.replace("#", "") && (
@@ -118,11 +116,10 @@ export function Header() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`rounded-xl px-4 py-3 text-lg font-medium transition-all ${
-                    activeSection === item.href.replace("#", "")
+                  className={`rounded-xl px-4 py-3 text-lg font-medium transition-all ${activeSection === item.href.replace("#", "")
                       ? "bg-primary/10 text-primary"
                       : "text-foreground hover:bg-muted"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </a>
