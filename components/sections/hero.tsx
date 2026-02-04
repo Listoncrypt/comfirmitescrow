@@ -83,7 +83,7 @@ export function HeroSection() {
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-primary/20 bg-card/80 px-4 py-2 shadow-lg shadow-primary/5 backdrop-blur-sm">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} weight="fill" className="text-amber-500" />
+                  <Star key={i} size={14} weight="fill" className="text-primary" />
                 ))}
               </div>
               <span className="text-sm font-semibold text-foreground">4.8</span>
