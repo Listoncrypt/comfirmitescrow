@@ -29,7 +29,7 @@ export default function Home() {
       </div>
 
       <Header />
-      <main className="relative z-0 flex-1">
+      <main className="relative z-0 flex-1" aria-label="Main content">
         <HeroSection />
         <TrustBadgesSection />
         <BenefitsSection />
