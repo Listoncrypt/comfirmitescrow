@@ -107,7 +107,7 @@ export function SecuritySection() {
               {/* Floating badges */}
               <div className="absolute -left-4 top-1/4 rounded-xl border border-border/50 bg-card/90 px-4 py-3 shadow-lg backdrop-blur-sm">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500/20 text-green-600">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-primary">
                     <ShieldCheck size={16} weight="fill" />
                   </div>
                   <div>

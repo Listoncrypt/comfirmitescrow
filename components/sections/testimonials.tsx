@@ -120,7 +120,7 @@ export function TestimonialsSection() {
                           key={i}
                           size={20}
                           weight="fill"
-                          className={i < testimonial.rating ? "text-amber-500" : "text-border"}
+                          className={i < testimonial.rating ? "text-primary" : "text-border"}
                         />
                       ))}
                     </div>
