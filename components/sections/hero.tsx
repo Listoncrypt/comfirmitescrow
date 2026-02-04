@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
@@ -155,6 +156,21 @@ export function HeroSection() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Escrow illustration */}
+            <div className="mt-12 hidden lg:block">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-transparent blur-2xl" />
+                <Image
+                  src="/images/escrow-illustration.jpg"
+                  alt="Secure escrow transactions with money and safe"
+                  width={500}
+                  height={300}
+                  className="relative rounded-2xl mix-blend-multiply opacity-90"
+                  priority
+                />
+              </div>
             </div>
           </div>
 
