@@ -83,21 +83,20 @@ export function HeroSection() {
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-primary/20 bg-card/80 px-4 py-2 shadow-lg shadow-primary/5 backdrop-blur-sm">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} weight="fill" className="text-amber-500" />
+                  <Star key={i} size={16} weight="fill" className="text-amber-400" />
                 ))}
               </div>
-              <span className="text-sm font-semibold text-foreground">4.8</span>
+              <span className="text-sm font-medium text-white">4.8</span>
               <span className="h-4 w-px bg-border" />
-              <span className="text-sm text-muted-foreground">From 1,500+ reviews</span>
+              <span className="text-sm text-white/70">From 1,500+ reviews</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
               <span className="relative block overflow-hidden">
                 <span
-                  className={`inline-block transition-all duration-500 ease-out ${
-                    isAnimating ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"
-                  }`}
+                  className={`inline-block transition-all duration-500 ease-out ${isAnimating ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"
+                    }`}
                 >
                   {headlines[currentHeadline].text}{" "}
                   <span className="relative inline-block">
@@ -105,9 +104,8 @@ export function HeroSection() {
                       {headlines[currentHeadline].highlight}
                     </span>
                     <span
-                      className={`absolute bottom-2 left-0 -z-0 h-3 rounded-full bg-primary/20 transition-all duration-700 ease-out ${
-                        isAnimating ? "w-0" : "w-full"
-                      }`}
+                      className={`absolute bottom-2 left-0 -z-0 h-3 rounded-full bg-primary/20 transition-all duration-700 ease-out ${isAnimating ? "w-0" : "w-full"
+                        }`}
                     />
                   </span>
                 </span>
@@ -126,18 +124,17 @@ export function HeroSection() {
                       setIsAnimating(false)
                     }, 500)
                   }}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === currentHeadline
+                  className={`h-1.5 rounded-full transition-all duration-300 ${index === currentHeadline
                       ? "w-10 bg-gradient-to-r from-primary to-accent"
                       : "w-4 bg-primary/20 hover:bg-primary/40"
-                  }`}
+                    }`}
                   aria-label={`Go to headline ${index + 1}`}
                 />
               ))}
             </div>
 
             {/* Description */}
-            <p className="mt-8 text-pretty text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-8 text-pretty text-lg leading-relaxed text-white/80">
               Confirmdeal provides a trusted escrow platform that protects both buyers and sellers.
               Experience secure transactions with transparent processes and complete peace of mind.
             </p>
@@ -175,11 +172,10 @@ export function HeroSection() {
                     <RadioGroupItem value="selling" id="selling" className="peer sr-only" />
                     <Label
                       htmlFor="selling"
-                      className={`flex cursor-pointer items-center justify-center rounded-xl border-2 px-4 py-3.5 text-sm font-medium transition-all ${
-                        role === "selling"
+                      className={`flex cursor-pointer items-center justify-center rounded-xl border-2 px-4 py-3.5 text-sm font-medium transition-all ${role === "selling"
                           ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
                           : "border-border bg-background/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
-                      }`}
+                        }`}
                     >
                       {"I'm Selling"}
                     </Label>
@@ -188,11 +184,10 @@ export function HeroSection() {
                     <RadioGroupItem value="buying" id="buying" className="peer sr-only" />
                     <Label
                       htmlFor="buying"
-                      className={`flex cursor-pointer items-center justify-center rounded-xl border-2 px-4 py-3.5 text-sm font-medium transition-all ${
-                        role === "buying"
+                      className={`flex cursor-pointer items-center justify-center rounded-xl border-2 px-4 py-3.5 text-sm font-medium transition-all ${role === "buying"
                           ? "border-primary bg-primary text-primary-foreground shadow-lg shadow-primary/25"
                           : "border-border bg-background/50 text-muted-foreground hover:border-primary/50 hover:bg-secondary"
-                      }`}
+                        }`}
                     >
                       {"I'm Buying"}
                     </Label>

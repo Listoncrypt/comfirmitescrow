@@ -47,17 +47,16 @@ export function FeaturesSection() {
 
       <div className="container mx-auto px-4">
         <div
-          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Platform Features
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
             Everything You Need for Secure Transactions
           </h2>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground">
+          <p className="mt-4 text-pretty text-lg text-white/70">
             Discover what makes Confirmdeal the most trusted escrow platform in Nigeria.
           </p>
         </div>
@@ -66,9 +65,8 @@ export function FeaturesSection() {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className={`group flex flex-col gap-6 overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-8 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 md:flex-row md:items-center ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
-              } ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+              className={`group flex flex-col gap-6 overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-8 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 md:flex-row md:items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""
+                } ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
               style={{ transitionDelay: `${index * 150 + 200}ms` }}
             >
               <div className="relative flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-accent/10 text-primary shadow-lg shadow-primary/10 ring-1 ring-primary/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:shadow-primary/20">
@@ -78,12 +76,12 @@ export function FeaturesSection() {
               </div>
               <div className="flex-1">
                 <div className="mb-2 flex flex-wrap items-center gap-3">
-                  <h3 className="text-xl font-semibold text-foreground">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
                   <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
                     {feature.highlight}
                   </span>
                 </div>
-                <p className="leading-relaxed text-muted-foreground">{feature.description}</p>
+                <p className="leading-relaxed text-white/70">{feature.description}</p>
               </div>
             </div>
           ))}

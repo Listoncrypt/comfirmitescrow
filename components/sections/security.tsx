@@ -48,17 +48,16 @@ export function SecuritySection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left content */}
           <div
-            className={`transition-all duration-700 ${
-              isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-            }`}
+            className={`transition-all duration-700 ${isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+              }`}
           >
             <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               Bank-Grade Security
             </span>
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
               Your Security is Our Priority
             </h2>
-            <p className="mt-4 text-pretty text-lg text-muted-foreground">
+            <p className="mt-4 text-pretty text-lg text-white/70">
               We employ multiple layers of security to protect your transactions and personal information.
             </p>
 
@@ -66,17 +65,16 @@ export function SecuritySection() {
               {securityFeatures.map((feature, index) => (
                 <div
                   key={feature.title}
-                  className={`flex gap-3 rounded-xl border border-border/50 bg-card/60 p-4 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 ${
-                    isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                  }`}
+                  className={`flex gap-3 rounded-xl border border-border/50 bg-card/60 p-4 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                    }`}
                   style={{ transitionDelay: `${index * 100 + 300}ms` }}
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <feature.icon size={20} weight="duotone" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-foreground">{feature.title}</h3>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{feature.description}</p>
+                    <h3 className="text-sm font-semibold text-white">{feature.title}</h3>
+                    <p className="mt-1 text-xs leading-relaxed text-white/70">{feature.description}</p>
                   </div>
                 </div>
               ))}
@@ -89,9 +87,8 @@ export function SecuritySection() {
 
           {/* Right content - Image */}
           <div
-            className={`relative transition-all delay-300 duration-700 ${
-              isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
-            }`}
+            className={`relative transition-all delay-300 duration-700 ${isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+              }`}
           >
             <div className="relative aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-primary/20 via-accent/20 to-primary/10 p-4">
               <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl">
@@ -111,8 +108,8 @@ export function SecuritySection() {
                     <ShieldCheck size={16} weight="fill" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-foreground">100% Protected</p>
-                    <p className="text-[10px] text-muted-foreground">All transactions insured</p>
+                    <p className="text-xs font-semibold text-white">100% Protected</p>
+                    <p className="text-[10px] text-white/60">All transactions insured</p>
                   </div>
                 </div>
               </div>
@@ -123,8 +120,8 @@ export function SecuritySection() {
                     <Lock size={16} weight="fill" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-foreground">256-bit SSL</p>
-                    <p className="text-[10px] text-muted-foreground">Bank-level encryption</p>
+                    <p className="text-xs font-semibold text-white">256-bit SSL</p>
+                    <p className="text-[10px] text-white/60">Bank-level encryption</p>
                   </div>
                 </div>
               </div>

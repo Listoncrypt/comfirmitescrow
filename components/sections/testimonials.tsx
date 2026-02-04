@@ -83,25 +83,23 @@ export function TestimonialsSection() {
 
       <div className="container mx-auto px-4">
         <div
-          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Testimonials
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
             Trusted by Thousands
           </h2>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground">
+          <p className="mt-4 text-pretty text-lg text-white/70">
             See what our customers have to say about their experience with Confirmdeal.
           </p>
         </div>
 
         <div
-          className={`relative mt-16 transition-all delay-200 duration-700 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`relative mt-16 transition-all delay-200 duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -125,7 +123,7 @@ export function TestimonialsSection() {
                       ))}
                     </div>
 
-                    <blockquote className="mb-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
+                    <blockquote className="mb-8 text-lg leading-relaxed text-white/80 md:text-xl">
                       &ldquo;{testimonial.quote}&rdquo;
                     </blockquote>
 
@@ -133,8 +131,8 @@ export function TestimonialsSection() {
                       <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-xl font-bold text-primary-foreground shadow-lg shadow-primary/25">
                         {testimonial.avatar}
                       </div>
-                      <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                      <h4 className="font-semibold text-white">{testimonial.name}</h4>
+                      <p className="text-sm text-white/60">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
@@ -158,9 +156,8 @@ export function TestimonialsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all ${
-                    index === currentIndex ? "w-8 bg-primary" : "w-2 bg-border hover:bg-primary/50"
-                  }`}
+                  className={`h-2 rounded-full transition-all ${index === currentIndex ? "w-8 bg-primary" : "w-2 bg-border hover:bg-primary/50"
+                    }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

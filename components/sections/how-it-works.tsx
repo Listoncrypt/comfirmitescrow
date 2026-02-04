@@ -43,17 +43,16 @@ export function HowItWorksSection() {
 
       <div className="container mx-auto px-4">
         <div
-          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+          className={`mx-auto max-w-2xl text-center transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
         >
           <span className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Simple Process
           </span>
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-white md:text-4xl">
             How Escrow Works
           </h2>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground">
+          <p className="mt-4 text-pretty text-lg text-white/70">
             Simple, secure, and straightforward. Here&apos;s how Confirmdeal protects your transactions.
           </p>
         </div>
@@ -66,9 +65,8 @@ export function HowItWorksSection() {
             {steps.map((step, index) => (
               <div
                 key={step.title}
-                className={`relative transition-all duration-700 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
+                className={`relative transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  }`}
                 style={{ transitionDelay: `${index * 150 + 200}ms` }}
               >
                 <div className="relative z-10 flex flex-col items-center text-center">
@@ -90,8 +88,8 @@ export function HowItWorksSection() {
                     <step.icon size={28} weight="duotone" />
                   </div>
 
-                  <h3 className="mb-2 text-lg font-semibold text-foreground">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{step.description}</p>
+                  <h3 className="mb-2 text-lg font-semibold text-white">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/70">{step.description}</p>
                 </div>
               </div>
             ))}

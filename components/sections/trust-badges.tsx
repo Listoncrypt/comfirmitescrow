@@ -23,17 +23,16 @@ export function TrustBadgesSection() {
           {badges.map((badge, index) => (
             <div
               key={badge.label}
-              className={`flex items-center gap-3 transition-all duration-700 ${
-                isVisible
+              className={`flex items-center gap-3 transition-all duration-700 ${isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-4 opacity-0"
-              }`}
+                }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <badge.icon size={20} weight="duotone" />
               </div>
-              <span className="text-sm font-medium text-muted-foreground">{badge.label}</span>
+              <span className="text-sm font-medium text-white/70">{badge.label}</span>
             </div>
           ))}
         </div>
