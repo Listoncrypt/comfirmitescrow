@@ -3,42 +3,48 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* =========================
+   Light Theme (default)
+   ========================= */
 :root {
-  --background: oklch(0.15 0.01 180);
-  --foreground: oklch(0.95 0.01 180);
-  --card: oklch(0.2 0.02 180);
-  --card-foreground: oklch(0.93 0.01 180);
-  --popover: oklch(0.2 0.02 180);
-  --popover-foreground: oklch(0.93 0.01 180);
-  --primary: oklch(0.6 0.18 180);
-  --primary-foreground: oklch(0.15 0.01 180);
-  --secondary: oklch(0.25 0.03 180);
-  --secondary-foreground: oklch(0.93 0.01 180);
-  --muted: oklch(0.3 0.02 180);
-  --muted-foreground: oklch(0.65 0.01 180);
-  --accent: oklch(0.58 0.16 180);
-  --accent-foreground: oklch(0.15 0.01 180);
+  --background: oklch(0.98 0.005 60);
+  --foreground: oklch(0.2 0.02 45);
+  --card: oklch(0.995 0.003 60);
+  --card-foreground: oklch(0.2 0.02 45);
+  --popover: oklch(0.995 0.003 60);
+  --popover-foreground: oklch(0.2 0.02 45);
+  --primary: oklch(0.45 0.12 55);
+  --primary-foreground: oklch(0.98 0.005 60);
+  --secondary: oklch(0.94 0.015 60);
+  --secondary-foreground: oklch(0.25 0.02 45);
+  --muted: oklch(0.92 0.01 60);
+  --muted-foreground: oklch(0.45 0.02 45);
+  --accent: oklch(0.55 0.1 45);
+  --accent-foreground: oklch(0.98 0.005 60);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.3 0.03 180);
-  --input: oklch(0.25 0.02 180);
-  --ring: oklch(0.6 0.18 180);
-  --chart-1: oklch(0.6 0.18 180);
-  --chart-2: oklch(0.55 0.15 180);
-  --chart-3: oklch(0.5 0.12 180);
-  --chart-4: oklch(0.65 0.15 180);
-  --chart-5: oklch(0.58 0.16 180);
+  --border: oklch(0.88 0.015 55);
+  --input: oklch(0.92 0.01 60);
+  --ring: oklch(0.45 0.12 55);
+  --chart-1: oklch(0.45 0.12 55);
+  --chart-2: oklch(0.55 0.1 45);
+  --chart-3: oklch(0.4 0.05 45);
+  --chart-4: oklch(0.65 0.12 70);
+  --chart-5: oklch(0.6 0.08 35);
   --radius: 0.75rem;
-  --sidebar: oklch(0.15 0.01 180);
-  --sidebar-foreground: oklch(0.93 0.01 180);
-  --sidebar-primary: oklch(0.6 0.18 180);
-  --sidebar-primary-foreground: oklch(0.15 0.01 180);
-  --sidebar-accent: oklch(0.25 0.03 180);
-  --sidebar-accent-foreground: oklch(0.93 0.01 180);
-  --sidebar-border: oklch(0.3 0.03 180);
-  --sidebar-ring: oklch(0.6 0.18 180);
+  --sidebar: oklch(0.985 0.005 60);
+  --sidebar-foreground: oklch(0.2 0.02 45);
+  --sidebar-primary: oklch(0.45 0.12 55);
+  --sidebar-primary-foreground: oklch(0.98 0.005 60);
+  --sidebar-accent: oklch(0.94 0.015 60);
+  --sidebar-accent-foreground: oklch(0.25 0.02 45);
+  --sidebar-border: oklch(0.88 0.015 55);
+  --sidebar-ring: oklch(0.6 0.08 55);
 }
 
+/* =========================
+   Dark Theme (teal branded)
+   ========================= */
 .dark {
   --background: oklch(0.12 0.01 180);
   --foreground: oklch(0.95 0.01 180);
@@ -74,6 +80,9 @@
   --sidebar-ring: oklch(0.6 0.18 180);
 }
 
+/* =========================
+   Tailwind theme mapping
+   ========================= */
 @theme inline {
   --font-sans: 'Geist', 'Geist Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
@@ -124,97 +133,9 @@
   }
 }
 
-/* Scroll-triggered animations */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes blur-in {
-  from {
-    opacity: 0;
-    filter: blur(10px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-.animate-fade-left {
-  opacity: 0;
-  animation: fade-in-left 0.8s ease-out forwards;
-}
-
-.animate-fade-right {
-  opacity: 0;
-  animation: fade-in-right 0.8s ease-out forwards;
-}
-
-.animate-scale-in {
-  opacity: 0;
-  animation: scale-in 0.6s ease-out forwards;
-}
-
-.animate-blur-in {
-  opacity: 0;
-  animation: blur-in 0.8s ease-out forwards;
-}
-
-.animation-delay-100 { animation-delay: 100ms; }
-.animation-delay-200 { animation-delay: 200ms; }
-.animation-delay-300 { animation-delay: 300ms; }
-.animation-delay-400 { animation-delay: 400ms; }
-.animation-delay-500 { animation-delay: 500ms; }
-.animation-delay-600 { animation-delay: 600ms; }
-.animation-delay-700 { animation-delay: 700ms; }
-.animation-delay-800 { animation-delay: 800ms; }
-
-/* Glass morphism effects */
+/* =========================
+   Glass morphism
+   ========================= */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
