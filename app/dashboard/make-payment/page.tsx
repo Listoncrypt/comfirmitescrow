@@ -160,3 +160,4 @@ async function ActiveDealButton({ supabase, userId }: { supabase: any; userId: s
         </div>
     );
 }
+

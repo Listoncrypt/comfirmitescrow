@@ -96,3 +96,4 @@ export function useScrollAnimationMultiple(
 
   return { setRef, visibleItems }
 }
+

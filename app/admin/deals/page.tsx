@@ -182,3 +182,4 @@ function DealsTable({ deals }: { deals: any[] }) {
     </Card>
   );
 }
+

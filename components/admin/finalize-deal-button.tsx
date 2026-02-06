@@ -165,3 +165,4 @@ export function FinalizeDealButton({ dealId, dealStatus, dealTitle }: FinalizeDe
         </Dialog>
     );
 }
+

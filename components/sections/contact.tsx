@@ -9,7 +9,7 @@ import { Mail, Send, Clock, MapPin } from "lucide-react"
 import { useState } from "react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
-const SUPPORT_EMAIL = "confirmdealescrow@gmail.com"
+const SUPPORT_EMAIL = "Confirmeditescrow@gmail.com"
 
 const contactInfo = [
   {
@@ -173,4 +173,5 @@ ${message}`
     </section>
   )
 }
+
 

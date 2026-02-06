@@ -57,7 +57,7 @@ export function FeaturesSection() {
             Everything You Need for Secure Transactions
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Discover what makes Confirmdeal the most trusted escrow platform in Nigeria.
+            Discover what makes Confirmedit the most trusted escrow platform in Nigeria.
           </p>
         </div>
 
@@ -90,4 +90,5 @@ export function FeaturesSection() {
     </section>
   )
 }
+
 

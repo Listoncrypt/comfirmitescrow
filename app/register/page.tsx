@@ -70,12 +70,12 @@ export default function RegisterPage() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo.jpg"
-            alt="Confirmdeal Logo"
+            alt="Confirmedit Logo"
             width={48}
             height={48}
             className="rounded-lg"
           />
-          <span className="text-2xl font-bold text-white">Confirmdeal</span>
+          <span className="text-2xl font-bold text-white">Confirmedit</span>
         </Link>
         <div>
           <h2 className="text-4xl font-bold text-white">
@@ -87,7 +87,7 @@ export default function RegisterPage() {
           </p>
         </div>
         <p className="text-sm text-white/60">
-          &copy; {new Date().getFullYear()} Confirmdeal. All rights reserved.
+          &copy; {new Date().getFullYear()} Confirmedit. All rights reserved.
         </p>
       </div>
 
@@ -332,3 +332,4 @@ export default function RegisterPage() {
     </div>
   );
 }
+

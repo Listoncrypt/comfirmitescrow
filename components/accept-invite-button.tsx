@@ -43,3 +43,4 @@ export function AcceptInviteButton({ dealId }: { dealId: string }) {
     </div>
   );
 }
+

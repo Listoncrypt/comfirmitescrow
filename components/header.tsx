@@ -66,8 +66,8 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:h-20">
         <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="Confirmdeal Logo" width={40} height={40} className="rounded-xl shadow-md" />
-          <span className="text-xl font-bold text-foreground">Confirmdeal</span>
+          <Image src="/logo.png" alt="Confirmedit Logo" width={40} height={40} className="rounded-xl shadow-md" />
+          <span className="text-xl font-bold text-foreground">Confirmedit</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -107,8 +107,8 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] border-border/50 bg-card/95 backdrop-blur-xl sm:w-[400px]">
             <div className="mb-8 flex items-center gap-2">
-              <Image src="/logo.png" alt="Confirmdeal Logo" width={36} height={36} className="rounded-lg" />
-              <span className="text-lg font-bold text-foreground">Confirmdeal</span>
+              <Image src="/logo.png" alt="Confirmedit Logo" width={36} height={36} className="rounded-lg" />
+              <span className="text-lg font-bold text-foreground">Confirmedit</span>
             </div>
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
@@ -139,3 +139,4 @@ export function Header() {
     </header>
   )
 }
+

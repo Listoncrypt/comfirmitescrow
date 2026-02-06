@@ -287,3 +287,4 @@ function FileText(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+

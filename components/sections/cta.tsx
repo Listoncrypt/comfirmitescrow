@@ -33,7 +33,7 @@ export function CTASection() {
             Ready to Secure Your Next Transaction?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-pretty text-lg text-primary-foreground/80">
-            Join thousands of satisfied users who trust Confirmdeal for their escrow needs. Start your first secure
+            Join thousands of satisfied users who trust Confirmedit for their escrow needs. Start your first secure
             transaction today.
           </p>
 
@@ -73,4 +73,5 @@ export function CTASection() {
     </section>
   )
 }
+
 

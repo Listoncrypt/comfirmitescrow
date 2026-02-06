@@ -23,3 +23,4 @@ export default async function AdminUsersPage() {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   return <UsersClient initialUsers={(users || []) as any[]} />;
 }
+

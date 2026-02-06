@@ -72,13 +72,13 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.png"
-                alt="Confirmdeal Logo"
+                alt="Confirmedit Logo"
                 width={36}
                 height={36}
                 className="rounded-lg"
               />
               <span className="text-xl font-bold text-foreground">
-                Confirmdeal
+                Confirmedit
               </span>
             </Link>
             <Button
@@ -164,3 +164,4 @@ export function DashboardSidebar({ profile }: DashboardSidebarProps) {
     </>
   );
 }
+

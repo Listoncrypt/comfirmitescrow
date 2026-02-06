@@ -33,3 +33,4 @@ export function CopyButton({ text }: CopyButtonProps) {
         </Button>
     );
 }
+

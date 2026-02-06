@@ -340,3 +340,4 @@ function EmailChangeForm({ currentEmail }: { currentEmail: string }) {
         </form>
     )
 }
+

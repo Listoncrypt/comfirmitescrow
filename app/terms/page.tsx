@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Terms of Service | Confirmdeal",
-    description: "Terms and conditions for using Confirmdeal escrow services",
+    title: "Terms of Service | Confirmedit",
+    description: "Terms and conditions for using Confirmedit escrow services",
 };
 
 export default function TermsPage() {
@@ -27,7 +27,7 @@ export default function TermsPage() {
                     <section className="mb-12">
                         <h2 className="text-2xl font-bold text-foreground mb-4">1. Agreement to Terms</h2>
                         <p className="text-muted-foreground leading-relaxed">
-                            By accessing or using Confirmdeal&apos;s escrow services, you agree to be bound by these Terms of Service.
+                            By accessing or using Confirmedit&apos;s escrow services, you agree to be bound by these Terms of Service.
                             If you do not agree to these terms, please do not use our services. These terms apply to all users,
                             including buyers, sellers, and brokers who use our platform.
                         </p>
@@ -36,7 +36,7 @@ export default function TermsPage() {
                     <section className="mb-12">
                         <h2 className="text-2xl font-bold text-foreground mb-4">2. Description of Services</h2>
                         <p className="text-muted-foreground leading-relaxed mb-4">
-                            Confirmdeal provides escrow services that act as a trusted third party in transactions between buyers and sellers.
+                            Confirmedit provides escrow services that act as a trusted third party in transactions between buyers and sellers.
                             Our services include:
                         </p>
                         <ul className="list-disc list-inside text-muted-foreground space-y-2">
@@ -56,10 +56,10 @@ export default function TermsPage() {
                             <h3 className="text-lg font-semibold text-foreground mb-3">How Escrow Works:</h3>
                             <ol className="list-decimal list-inside text-muted-foreground space-y-2">
                                 <li>Buyer and seller agree on transaction terms</li>
-                                <li>Buyer deposits funds into Confirmdeal escrow</li>
+                                <li>Buyer deposits funds into Confirmedit escrow</li>
                                 <li>Seller delivers goods or services</li>
                                 <li>Buyer inspects and confirms satisfaction</li>
-                                <li>Confirmdeal releases funds to seller (minus platform fee)</li>
+                                <li>Confirmedit releases funds to seller (minus platform fee)</li>
                             </ol>
                         </div>
                         <p className="text-muted-foreground leading-relaxed">
@@ -78,11 +78,11 @@ export default function TermsPage() {
                         <ul className="list-disc list-inside text-muted-foreground space-y-2">
                             <li>Review of all transaction evidence and communications</li>
                             <li>Mediation between parties</li>
-                            <li>Final decision by Confirmdeal administrators</li>
+                            <li>Final decision by Confirmedit administrators</li>
                             <li>Fund allocation based on resolution outcome</li>
                         </ul>
                         <p className="text-muted-foreground leading-relaxed mt-4">
-                            Confirmdeal&apos;s decision in disputes is final and binding on all parties.
+                            Confirmedit&apos;s decision in disputes is final and binding on all parties.
                         </p>
                     </section>
 
@@ -91,7 +91,7 @@ export default function TermsPage() {
                     <section className="mb-12">
                         <h2 className="text-2xl font-bold text-foreground mb-4">9. Limitation of Liability</h2>
                         <p className="text-muted-foreground leading-relaxed">
-                            Confirmdeal acts as a neutral third party and is not responsible for the quality, safety, or legality
+                            Confirmedit acts as a neutral third party and is not responsible for the quality, safety, or legality
                             of items or services transacted. We are not liable for any indirect, incidental, or consequential
                             damages arising from the use of our services. Our total liability shall not exceed the fees paid
                             to us for the specific transaction in question.
@@ -118,3 +118,4 @@ export default function TermsPage() {
         </div>
     );
 }
+

@@ -73,3 +73,4 @@ export function DashboardHeader({ profile }: DashboardHeaderProps) {
     </header>
   );
 }
+

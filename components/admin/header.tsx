@@ -74,3 +74,4 @@ export function AdminHeader({ profile }: AdminHeaderProps) {
     </header>
   );
 }
+

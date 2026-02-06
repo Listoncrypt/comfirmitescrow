@@ -41,11 +41,11 @@ Our dispute resolution system has successfully resolved over 98% of cases, ensur
     title: "Payment Processing: Mass positive reports are empowering this web portal safe and secure",
     excerpt:
       "Security is at the heart of every transaction on our platform. Learn how our payment processing system keeps your funds safe...",
-    fullContent: `Security is at the heart of every transaction on our platform. Learn how our payment processing system keeps your funds safe and why users trust Confirmdeal for their most important transactions.
+    fullContent: `Security is at the heart of every transaction on our platform. Learn how our payment processing system keeps your funds safe and why users trust Confirmedit for their most important transactions.
 
 **Our Multi-Layer Security Approach:**
 
-At Confirmdeal, we employ a comprehensive security infrastructure that protects your funds at every stage of the transaction.
+At Confirmedit, we employ a comprehensive security infrastructure that protects your funds at every stage of the transaction.
 
 **Bank-Grade Encryption**
 All financial data is encrypted using AES-256 encryption, the same standard used by leading financial institutions worldwide. Your payment information is never stored in plain text.
@@ -64,7 +64,7 @@ Our AI-powered fraud detection system monitors transactions 24/7, identifying an
 **Continuous Improvement**
 We regularly undergo independent security audits and penetration testing to identify and address potential vulnerabilities before they can be exploited.
 
-Trust Confirmdeal for your secure payment processing needs.`,
+Trust Confirmedit for your secure payment processing needs.`,
     date: "January 10, 2026",
     category: "Security",
     readTime: "4 min read",
@@ -82,7 +82,7 @@ An escrow agreement serves as the foundation of any secure transaction, clearly 
 
 **Key Components of an Escrow Agreement:**
 
-1. **Party Identification**: Clear identification of the buyer, seller, and escrow agent (Confirmdeal).
+1. **Party Identification**: Clear identification of the buyer, seller, and escrow agent (Confirmedit).
 
 2. **Transaction Details**: Specific description of the goods, services, or assets being exchanged.
 
@@ -101,11 +101,11 @@ An escrow agreement serves as the foundation of any secure transaction, clearly 
 - **Risk Mitigation**: Reduces the risk of fraud or misunderstanding
 - **Documentation**: Creates a paper trail for accountability
 
-**Creating Your Escrow Agreement with Confirmdeal:**
+**Creating Your Escrow Agreement with Confirmedit:**
 
 Our platform automatically generates comprehensive escrow agreements tailored to your specific transaction, ensuring all legal requirements are met while making the process simple and straightforward.
 
-Start your secure transaction today with Confirmdeal.`,
+Start your secure transaction today with Confirmedit.`,
     date: "January 5, 2026",
     category: "Education",
     readTime: "6 min read",
@@ -268,4 +268,5 @@ export function BlogSection() {
     </>
   )
 }
+
 

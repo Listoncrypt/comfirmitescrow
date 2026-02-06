@@ -1,4 +1,4 @@
-# Confirmdeal - Secure Escrow Platform
+# Confirmedit - Secure Escrow Platform
 
 A premium fintech escrow service platform built with Next.js 16, React 19, Supabase, and Tailwind CSS.
 

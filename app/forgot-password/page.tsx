@@ -40,12 +40,12 @@ export default function ForgotPasswordPage() {
                     <Link href="/" className="flex items-center gap-3">
                         <Image
                             src="/logo.jpg"
-                            alt="Confirmdeal Logo"
+                            alt="Confirmedit Logo"
                             width={48}
                             height={48}
                             className="rounded-lg"
                         />
-                        <span className="text-2xl font-bold text-white">Confirmdeal</span>
+                        <span className="text-2xl font-bold text-white">Confirmedit</span>
                     </Link>
                     <div>
                         <h2 className="text-4xl font-bold text-white">
@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
                         </p>
                     </div>
                     <p className="text-sm text-white/60">
-                        &copy; {new Date().getFullYear()} Confirmdeal. All rights reserved.
+                        &copy; {new Date().getFullYear()} Confirmedit. All rights reserved.
                     </p>
                 </div>
 
@@ -65,12 +65,12 @@ export default function ForgotPasswordPage() {
                         <div className="mb-8 flex items-center justify-center gap-3 lg:hidden">
                             <Image
                                 src="/logo.jpg"
-                                alt="Confirmdeal Logo"
+                                alt="Confirmedit Logo"
                                 width={40}
                                 height={40}
                                 className="rounded-lg"
                             />
-                            <span className="text-xl font-bold text-foreground">Confirmdeal</span>
+                            <span className="text-xl font-bold text-foreground">Confirmedit</span>
                         </div>
 
                         <div className="flex justify-center mb-6">
@@ -116,12 +116,12 @@ export default function ForgotPasswordPage() {
                 <Link href="/" className="flex items-center gap-3">
                     <Image
                         src="/logo.jpg"
-                        alt="Confirmdeal Logo"
+                        alt="Confirmedit Logo"
                         width={48}
                         height={48}
                         className="rounded-lg"
                     />
-                    <span className="text-2xl font-bold text-white">Confirmdeal</span>
+                    <span className="text-2xl font-bold text-white">Confirmedit</span>
                 </Link>
                 <div>
                     <h2 className="text-4xl font-bold text-white">
@@ -132,7 +132,7 @@ export default function ForgotPasswordPage() {
                     </p>
                 </div>
                 <p className="text-sm text-white/60">
-                    &copy; {new Date().getFullYear()} Confirmdeal. All rights reserved.
+                    &copy; {new Date().getFullYear()} Confirmedit. All rights reserved.
                 </p>
             </div>
 
@@ -149,12 +149,12 @@ export default function ForgotPasswordPage() {
                     <div className="mb-8 flex items-center gap-3 lg:hidden">
                         <Image
                             src="/logo.jpg"
-                            alt="Confirmdeal Logo"
+                            alt="Confirmedit Logo"
                             width={40}
                             height={40}
                             className="rounded-lg"
                         />
-                        <span className="text-xl font-bold text-foreground">Confirmdeal</span>
+                        <span className="text-xl font-bold text-foreground">Confirmedit</span>
                     </div>
 
                     <div className="flex justify-center mb-6">
@@ -230,3 +230,4 @@ export default function ForgotPasswordPage() {
         </div>
     );
 }
+

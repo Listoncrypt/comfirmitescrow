@@ -47,3 +47,4 @@ export function WithdrawalCancelButton({ withdrawalId }: WithdrawalCancelButtonP
     </Button>
   );
 }
+

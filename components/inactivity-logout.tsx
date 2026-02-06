@@ -56,3 +56,4 @@ export function InactivityLogout() {
     // This component doesn't render anything visible
     return null;
 }
+

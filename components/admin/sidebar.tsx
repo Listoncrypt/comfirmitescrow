@@ -73,14 +73,14 @@ export function AdminSidebar({ profile }: AdminSidebarProps) {
             <Link href="/admin" className="flex items-center gap-3">
               <Image
                 src="/logo.jpg"
-                alt="Confirmdeal Logo"
+                alt="Confirmedit Logo"
                 width={36}
                 height={36}
                 className="rounded-lg"
               />
               <div className="flex items-center gap-2">
                 <span className="text-xl font-bold text-foreground">
-                  Confirmdeal
+                  Confirmedit
                 </span>
                 <span className="text-xs bg-primary text-primary-foreground px-1.5 py-0.5 rounded font-medium">
                   ADMIN
@@ -154,3 +154,4 @@ export function AdminSidebar({ profile }: AdminSidebarProps) {
     </>
   );
 }
+

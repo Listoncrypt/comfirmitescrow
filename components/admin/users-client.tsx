@@ -184,3 +184,4 @@ export function UsersClient({ initialUsers }: { initialUsers: Profile[] }) {
         </div>
     );
 }
+
