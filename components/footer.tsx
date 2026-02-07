@@ -44,7 +44,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
               <Image src="/logo.png" alt="Confirmedit Logo" width={40} height={40} className="rounded-xl shadow-md" />
-              <span className="text-xl font-bold text-foreground">C<span className="text-primary">o</span>nfirmedit</span>
+              <span className="text-xl font-bold text-foreground">C<span className="text-primary font-black">o</span>nfirmedit</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Secure every deal with confidence. Confirmedit is your trusted partner for safe and transparent escrow
