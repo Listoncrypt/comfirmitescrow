@@ -66,7 +66,7 @@ export default function ResetPasswordPage() {
                             height={48}
                             className="rounded-lg"
                         />
-                        <span className="text-2xl font-bold text-white">Confirmedit</span>
+                        <span className="text-2xl font-bold text-white">C<span className="text-primary">o</span>nfirmedit</span>
                     </Link>
                     <div>
                         <h2 className="text-4xl font-bold text-white">
@@ -91,7 +91,7 @@ export default function ResetPasswordPage() {
                                 height={40}
                                 className="rounded-lg"
                             />
-                            <span className="text-xl font-bold text-foreground">Confirmedit</span>
+                            <span className="text-xl font-bold text-foreground">C<span className="text-primary">o</span>nfirmedit</span>
                         </div>
 
                         <div className="flex justify-center mb-6">
@@ -129,7 +129,7 @@ export default function ResetPasswordPage() {
                         height={48}
                         className="rounded-lg"
                     />
-                    <span className="text-2xl font-bold text-white">Confirmedit</span>
+                    <span className="text-2xl font-bold text-white">C<span className="text-primary">o</span>nfirmedit</span>
                 </Link>
                 <div>
                     <h2 className="text-4xl font-bold text-white">
@@ -162,7 +162,7 @@ export default function ResetPasswordPage() {
                             height={40}
                             className="rounded-lg"
                         />
-                        <span className="text-xl font-bold text-foreground">Confirmedit</span>
+                        <span className="text-xl font-bold text-foreground">C<span className="text-primary">o</span>nfirmedit</span>
                     </div>
 
                     <div className="flex justify-center mb-6">

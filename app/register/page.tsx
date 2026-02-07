@@ -75,7 +75,7 @@ export default function RegisterPage() {
             height={48}
             className="rounded-lg"
           />
-          <span className="text-2xl font-bold text-white">Confirmedit</span>
+          <span className="text-2xl font-bold text-white">C<span className="text-primary">o</span>nfirmedit</span>
         </Link>
         <div>
           <h2 className="text-4xl font-bold text-white">
