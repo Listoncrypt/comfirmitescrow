@@ -67,7 +67,7 @@ export default function LoginPage() {
               height={48}
               className="rounded-lg"
             />
-            <span className="text-2xl font-bold text-white">C<span className="text-primary font-black">o</span>nfirmedit</span>
+            <span className="text-2xl font-bold text-white">C<span className="text-emerald-500 font-black">o</span>nfirmedit</span>
           </Link>
           <div>
             <h2 className="text-4xl font-bold text-white">
@@ -101,7 +101,7 @@ export default function LoginPage() {
                 height={40}
                 className="rounded-lg"
               />
-              <span className="text-xl font-bold text-foreground">C<span className="text-primary font-black">o</span>nfirmedit</span>
+              <span className="text-xl font-bold text-foreground">C<span className="text-emerald-500 font-black">o</span>nfirmedit</span>
             </div>
 
             <h1 className="text-3xl font-bold text-foreground">Welcome back</h1>
