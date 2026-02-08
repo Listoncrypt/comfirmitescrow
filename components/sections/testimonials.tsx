@@ -93,7 +93,7 @@ export function TestimonialsSection() {
             Trusted by Thousands
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            See what our customers have to say about their experience with Confirmedit.
+            See what our customers have to say about their experience with CONFIRMEDIT.
           </p>
         </div>
 

@@ -231,7 +231,7 @@ export default async function AdminSettingsPage() {
                   <Input
                     id="escrow_account_name"
                     name="escrow_account_name"
-                    placeholder="Confirmedit Escrow Ltd"
+                    placeholder="CONFIRMEDIT Escrow Ltd"
                     defaultValue={settings.escrow_account_name as string || ""}
                   />
                 </div>

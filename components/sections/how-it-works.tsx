@@ -53,7 +53,7 @@ export function HowItWorksSection() {
             How Escrow Works
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Simple, secure, and straightforward. Here&apos;s how Confirmedit protects your transactions.
+            Simple, secure, and straightforward. Here&apos;s how CONFIRMEDIT protects your transactions.
           </p>
         </div>
 

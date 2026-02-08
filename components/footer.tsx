@@ -43,11 +43,11 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
-              <Image src="/logo.png" alt="Confirmedit Logo" width={40} height={40} className="rounded-xl shadow-md" />
-              <span className="text-xl font-bold text-foreground">C<span className="text-emerald-500 font-black">o</span>nfirmedit</span>
+              <Image src="/logo.png" alt="CONFIRMEDIT Logo" width={40} height={40} className="rounded-xl shadow-md" />
+              <span className="text-xl font-bold text-foreground">C<span className="text-emerald-500 font-black">O</span>NFIRMED<span className="text-emerald-500 font-black">IT</span></span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Secure every deal with confidence. Confirmedit is your trusted partner for safe and transparent escrow
+              Secure every deal with confidence. CONFIRMEDIT is your trusted partner for safe and transparent escrow
               transactions in Nigeria and beyond.
             </p>
             <div className="mt-6 flex gap-3">
@@ -131,7 +131,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Confirmedit. All rights reserved.
+            &copy; {new Date().getFullYear()} CONFIRMEDIT. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-primary">

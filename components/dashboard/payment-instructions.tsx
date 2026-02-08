@@ -35,7 +35,7 @@ export function PaymentInstructions({ dealAmount, dealTitle }: PaymentInstructio
                 setSettings({
                     escrow_bank_name: data.escrow_bank_name || "First Bank",
                     escrow_account_number: data.escrow_account_number || "1234567890",
-                    escrow_account_name: data.escrow_account_name || "Confirmedit Escrow",
+                    escrow_account_name: data.escrow_account_name || "CONFIRMEDIT Escrow",
                     usdt_network: data.usdt_network || "TRC20",
                     usdt_wallet_address: data.usdt_wallet_address || "",
                 });

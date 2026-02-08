@@ -135,7 +135,7 @@ export function HeroSection() {
 
             {/* Description */}
             <p className="mt-8 text-pretty text-lg leading-relaxed text-muted-foreground">
-              Confirmedit provides a trusted escrow platform that protects both buyers and sellers.
+              CONFIRMEDIT provides a trusted escrow platform that protects both buyers and sellers.
               Experience secure transactions with transparent processes and complete peace of mind.
             </p>
 

@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Confirmedit",
-    description: "Privacy policy for Confirmedit escrow services",
+    title: "Privacy Policy | CONFIRMEDIT",
+    description: "Privacy policy for CONFIRMEDIT escrow services",
 };
 
 export default function PrivacyPage() {
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
                     <section className="mb-12">
                         <h2 className="text-2xl font-bold text-foreground mb-4">Introduction</h2>
                         <p className="text-muted-foreground leading-relaxed">
-                            At Confirmedit, we take your privacy seriously. This Privacy Policy explains how we collect,
+                            At CONFIRMEDIT, we take your privacy seriously. This Privacy Policy explains how we collect,
                             use, disclose, and safeguard your information when you use our escrow platform. Please read
                             this policy carefully to understand our practices regarding your personal data.
                         </p>
@@ -177,8 +177,8 @@ export default function PrivacyPage() {
                                 If you have questions about this Privacy Policy or our data practices, please contact us:
                             </p>
                             <ul className="text-muted-foreground mt-4 space-y-2">
-                                <li><strong>Email:</strong> Confirmeditescrow@gmail.com</li>
-                                <li><strong>Support:</strong> Confirmeditescrow@gmail.com</li>
+                                <li><strong>Email:</strong> CONFIRMEDITescrow@gmail.com</li>
+                                <li><strong>Support:</strong> CONFIRMEDITescrow@gmail.com</li>
                                 <li><strong>Website:</strong> www.comfirmdealescrow.com</li>
                             </ul>
                         </div>

@@ -84,7 +84,7 @@ export function StatsSection() {
             Trusted by Thousands Across Nigeria
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Join the growing community of buyers and sellers who trust Confirmedit for secure transactions.
+            Join the growing community of buyers and sellers who trust CONFIRMEDIT for secure transactions.
           </p>
         </div>
 

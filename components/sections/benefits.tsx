@@ -42,7 +42,7 @@ export function BenefitsSection() {
             Why Choose Us
           </span>
           <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Benefits of Confirmedit
+            Benefits of CONFIRMEDIT
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
             Experience secure and hassle-free transactions with our trusted escrow platform.
