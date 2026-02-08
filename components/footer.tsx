@@ -44,7 +44,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
               <Image src="/logo.png" alt="CONFIRMEDIT Logo" width={40} height={40} className="rounded-xl shadow-md" />
-              <span className="text-xl font-bold text-foreground">C<span className="text-emerald-500 font-black">O</span>NFIRMED<span className="text-emerald-500 font-black">IT</span></span>
+              <span className="text-xl font-bold text-foreground">C<span className="text-emerald-500">●</span>NFIRMED<span className="text-emerald-500 font-black">IT</span></span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Secure every deal with confidence. CONFIRMEDIT is your trusted partner for safe and transparent escrow
