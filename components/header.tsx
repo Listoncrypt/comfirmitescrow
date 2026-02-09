@@ -45,16 +45,21 @@ export function Header() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     const targetId = href.replace("#", "")
-    const element = document.getElementById(targetId)
 
-    if (element) {
-      const offsetTop = element.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      })
-    }
+    // Close the mobile menu first
     setIsOpen(false)
+
+    // Small delay to allow sheet to close before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(targetId)
+      if (element) {
+        const offsetTop = element.offsetTop - 80
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        })
+      }
+    }, 100)
   }
 
   return (
