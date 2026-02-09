@@ -44,22 +44,27 @@ export function Header() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
+    e.stopPropagation()
     const targetId = href.replace("#", "")
 
     // Close the mobile menu first
     setIsOpen(false)
 
-    // Small delay to allow sheet to close before scrolling
+    // Longer delay for iOS to fully close the sheet before scrolling
     setTimeout(() => {
       const element = document.getElementById(targetId)
       if (element) {
-        const offsetTop = element.offsetTop - 80
-        window.scrollTo({
-          top: offsetTop,
+        // Use scrollIntoView for better iOS Safari support
+        element.scrollIntoView({
           behavior: "smooth",
+          block: "start"
         })
+        // Adjust for header offset after scroll
+        setTimeout(() => {
+          window.scrollBy({ top: -80, behavior: "smooth" })
+        }, 100)
       }
-    }, 100)
+    }, 300)
   }
 
   return (
