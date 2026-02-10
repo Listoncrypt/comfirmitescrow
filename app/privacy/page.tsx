@@ -114,7 +114,7 @@ export default function PrivacyPage() {
                         <p className="text-muted-foreground leading-relaxed">
                             We retain your personal information for as long as necessary to provide our services,
                             comply with legal obligations, resolve disputes, and enforce our agreements. Transaction
-                            records are typically retained for a minimum of 7 years for regulatory compliance.
+                            records are typically retained for a minimum of years for regulatory compliance.
                         </p>
                     </section>
 
@@ -131,7 +131,7 @@ export default function PrivacyPage() {
                             <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
                         </ul>
                         <p className="text-muted-foreground leading-relaxed mt-4">
-                            To exercise these rights, please contact us at comfirmitescrow@gmail.com.
+                            To exercise these rights, please contact us at confirmedit@gmail.com.
                         </p>
                     </section>
 
@@ -177,9 +177,9 @@ export default function PrivacyPage() {
                                 If you have questions about this Privacy Policy or our data practices, please contact us:
                             </p>
                             <ul className="text-muted-foreground mt-4 space-y-2">
-                                <li><strong>Email:</strong> CONFIRMEDITescrow@gmail.com</li>
-                                <li><strong>Support:</strong> CONFIRMEDITescrow@gmail.com</li>
-                                <li><strong>Website:</strong> www.comfirmdealescrow.com</li>
+                                <li><strong>Email:</strong> confirmedit@gmail.com</li>
+                                <li><strong>Support:</strong> confirmedit@gmail.com</li>
+                                <li><strong>Website:</strong> www.confirmedit.com</li>
                             </ul>
                         </div>
                     </section>
