@@ -50,21 +50,15 @@ export function Header() {
     // Close the mobile menu first
     setIsOpen(false)
 
-    // Longer delay for iOS to fully close the sheet before scrolling
+    // Delay to let sheet fully close, then scroll
     setTimeout(() => {
       const element = document.getElementById(targetId)
       if (element) {
-        // Use scrollIntoView for better iOS Safari support
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        })
-        // Adjust for header offset after scroll
-        setTimeout(() => {
-          window.scrollBy({ top: -80, behavior: "smooth" })
-        }, 100)
+        const rect = element.getBoundingClientRect()
+        const absoluteTop = rect.top + window.pageYOffset - 90
+        window.scroll({ top: absoluteTop, left: 0, behavior: "smooth" })
       }
-    }, 300)
+    }, 350)
   }
 
   return (
