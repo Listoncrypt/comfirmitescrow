@@ -9,7 +9,7 @@ import { Mail, Send, Clock, MapPin } from "lucide-react"
 import { useState } from "react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
-const SUPPORT_EMAIL = "CONFIRMEDITescrow@gmail.com"
+const SUPPORT_EMAIL = "confirmeditescrow@gmail.com"
 
 const contactInfo = [
   {
@@ -27,7 +27,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Lagos, Nigeria",
+    value: "Abuja, Nigeria",
     href: null,
   },
 ]
